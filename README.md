@@ -1,2 +1,2 @@
 # gumbo-main
-gumbo.kr main page
+gumbo.kr 메인 페이지
