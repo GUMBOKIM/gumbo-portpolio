@@ -1,10 +1,9 @@
 import React from "react";
+import SectionLayOut from "./SectionLayout";
 
 const Section4: React.FC = () => {
     return (
-        <div>
-            Section4
-        </div>
+        <SectionLayOut scrollHeight={2}/>
     );
 }
 
