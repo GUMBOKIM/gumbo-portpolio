@@ -40,6 +40,7 @@ const App: React.FC = () => {
 
     return (
         <>
+            ASDFFF
             <PersonInfoSection currentSection={currentSection} currentScrollY={currentScrollY}/>
             <CareerSection/>
             <Section3/>
