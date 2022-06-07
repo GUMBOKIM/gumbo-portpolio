@@ -8,7 +8,7 @@ const PersonInfoContainer = styled.div`
   flex-direction: column;
   
   > div {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
 `
 
@@ -19,6 +19,8 @@ const PersonInfoTitle = styled.div`
 const ProfileImg = styled.div`
   background: url("img/ProfileImg.png");
   background-size: cover;
+
+  opacity: 0.8;
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -30,6 +32,7 @@ const ProfileImg = styled.div`
   }
   
   :hover {
+
     animation: rotate_image 6s linear infinite;transform-origin: 50% 50%;
   }
 `
@@ -44,10 +47,10 @@ const PersonInfoSection: React.FC = () => {
             <PersonInfoTitle>
                 개발자 김대희
             </PersonInfoTitle>
-            <ProfileImg/>
             <PersonInfoTitleDesc>
                 aka GUMBO
             </PersonInfoTitleDesc>
+            <ProfileImg/>
         </PersonInfoContainer>
 
     );
