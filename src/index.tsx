@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import GlobalStyle from './styles/GlobalStyle';
-import './component/pageLayout/PageLayout.css';
-import {PageLayout} from "./component/pageLayout/PageLayout";
+import './component/0.pageLayout/PageLayout.css';
+import {PageLayout} from "./component/0.pageLayout/PageLayout";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

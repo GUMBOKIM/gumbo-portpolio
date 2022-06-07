@@ -1,5 +1,6 @@
 import React from 'react';
-import PersonInfoSection from "./component/PersonalInfo/PersonInfoSection";
+import PersonInfoSection from "./component/1.personalInfo/PersonInfoSection";
+import CareerSection from "./component/2.career/CareerSection";
 
 //
 // const SectionHeightArr: number[] = [2, 3, 2, 2]
@@ -38,6 +39,7 @@ const App: React.FC = () => {
     return (
         <>
             <PersonInfoSection/>
+            <CareerSection />
             {/*<CareerSection/>*/}
             {/*<Section3/>*/}
             {/*<Section4/>*/}

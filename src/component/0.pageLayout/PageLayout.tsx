@@ -14,6 +14,10 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: center;
+  
+  > div {
+    margin: 20px 0;
+  }
 `
 
 export const PageLayout: React.FC<{ children: ReactNode }> = ({children}) => {
