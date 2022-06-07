@@ -9,7 +9,7 @@ const PersonInfoSection: React.FC<SectionProps> = React.memo((
     return (
         <SectionLayOut scrollHeight={2}>
             <div>
-
+                Developer Gumbo
             </div>
         </SectionLayOut>
     );

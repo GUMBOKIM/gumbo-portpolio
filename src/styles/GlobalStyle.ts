@@ -31,5 +31,3 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 `;
-
-export default GlobalStyle;
