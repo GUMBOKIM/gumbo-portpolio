@@ -32,14 +32,20 @@ const ProfileImg = styled.div`
   }
   
   :hover {
-
     animation: rotate_image 6s linear infinite;transform-origin: 50% 50%;
   }
 `
 
-const PersonInfoTitleDesc = styled.div`
-  font-size: x-large;
+const PersonInfoTitleBottom = styled.div`
+  font-size: large;
 `
+
+const PersonInfoContents = styled.div`
+  font-size: large;
+  line-height: 30px;
+`
+
+
 
 const PersonInfoSection: React.FC = () => {
     return (
@@ -47,10 +53,15 @@ const PersonInfoSection: React.FC = () => {
             <PersonInfoTitle>
                 개발자 김대희
             </PersonInfoTitle>
-            <PersonInfoTitleDesc>
+            <PersonInfoTitleBottom>
                 aka GUMBO
-            </PersonInfoTitleDesc>
+            </PersonInfoTitleBottom>
             <ProfileImg/>
+            <PersonInfoContents>
+                누구보다 소통하며 개발하고 싶습니다.<br/>
+                누구보다 재미있게 개발하고 싶습니다.<br/>
+                누구보다 유쾌하게 개발하고 싶습니다.
+            </PersonInfoContents>
         </PersonInfoContainer>
 
     );
