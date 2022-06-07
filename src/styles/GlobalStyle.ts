@@ -8,7 +8,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     background-color: #ffffff;
-    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   a {
     color: inherit;
@@ -19,9 +18,6 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
   }
-  h1, h2, h3, h4, h5, h6{
-    font-family:'Maven Pro', sans-serif;
-  }
   ol, ul, li {
     list-style: none;
   }
@@ -31,3 +27,5 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 `;
+
+export default GlobalStyle;

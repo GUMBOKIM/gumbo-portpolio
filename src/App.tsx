@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PersonInfoSection from "./component/PersonInfoSection";
-import CareerSection from './component/CareerSection';
-import Section3 from "./component/Section3";
-import Section4 from "./component/Section4";
+import PersonInfoSection from "./component/PersonalInfo/PersonInfoSection";
 
 
 const SectionHeightArr: number[] = [2, 3, 2, 2]
@@ -40,10 +37,10 @@ const App: React.FC = () => {
 
     return (
         <>
-            <PersonInfoSection currentSection={currentSection} currentScrollY={currentScrollY}/>
-            <CareerSection/>
-            <Section3/>
-            <Section4/>
+            <PersonInfoSection/>
+            {/*<CareerSection/>*/}
+            {/*<Section3/>*/}
+            {/*<Section4/>*/}
         </>
     );
 }

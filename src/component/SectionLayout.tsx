@@ -1,5 +1,6 @@
 import React, {ReactNode} from "react";
 import styled from "styled-components";
+import './pageLayout/PageLayout.css'
 
 const SectionContainer = styled.div<{ scrollHeight: number }>`
   width: 100%;
@@ -19,7 +20,6 @@ interface SectionLayOutProps {
 }
 
 const SectionLayOut: React.FC<SectionLayOutProps> = ({scrollHeight, children}) => {
-
     return (
         <SectionContainer scrollHeight={scrollHeight} onScroll={() => console.log('scroll')}>
             <SectionSticky>
