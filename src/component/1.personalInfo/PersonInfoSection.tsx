@@ -10,6 +10,7 @@ import {
 } from "./PersonInfoSection.style";
 import {ContactData} from "./PersonInfoData";
 import {isMobile} from "react-device-detect";
+import {PersonIntroduce} from "./PersonIntroduce";
 
 const PersonInfoSection: React.FC = () => {
     return (
@@ -43,7 +44,7 @@ const PersonInfoSection: React.FC = () => {
                     )
                 }
             </ContactItemsContainer>
-
+            <PersonIntroduce/>
         </PersonInfoContainer>
     );
 }

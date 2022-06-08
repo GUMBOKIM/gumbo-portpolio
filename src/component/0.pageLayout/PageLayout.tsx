@@ -22,10 +22,6 @@ const PageContainer = styled.div`
   @media(max-width: 1080px) {
     width: 90vw;
   }
-  
-  > div {
-    margin: 20px 0;
-  }
 `
 
 export const PageLayout: React.FC<{ children: ReactNode }> = ({children}) => {

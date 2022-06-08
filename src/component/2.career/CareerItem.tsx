@@ -14,7 +14,7 @@ const CareerItemContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 0.8rem;
   
   > div:nth-of-type(1) {
     width: 40%;
@@ -28,7 +28,8 @@ const CareerItemContainer = styled.div`
 `
 
 const CareerItemTitle = styled.div`
-  font-size: x-large;
+  font-size: large;
+  margin-bottom: 0.5rem;
 `
 
 const CareerItemPeriod = styled.div`

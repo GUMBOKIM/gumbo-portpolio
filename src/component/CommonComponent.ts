@@ -5,6 +5,7 @@ export const SectionContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 10vh 0;
 `
 
 export const SectionTitle = styled.div`

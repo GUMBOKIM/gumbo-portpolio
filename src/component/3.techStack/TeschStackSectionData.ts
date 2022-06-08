@@ -27,6 +27,9 @@ export const BackEndData : TechStackItemProps[] = [
         image: "img/backend/jpa.png",
         name: "JPA"
     },    {
+        image: "img/backend/querydsl.png",
+        name: "Query\nDSL"
+    },    {
         image: "img/backend/mysql.png",
         name: "MYSQL"
     },    {

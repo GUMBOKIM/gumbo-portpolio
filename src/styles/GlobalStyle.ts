@@ -29,6 +29,11 @@ const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar {
     display: none;
   }
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
 `;
 
 export default GlobalStyle;

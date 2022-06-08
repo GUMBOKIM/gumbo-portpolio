@@ -2,6 +2,7 @@ import React from 'react';
 import PersonInfoSection from "./component/1.personalInfo/PersonInfoSection";
 import CareerSection from "./component/2.career/CareerSection";
 import TechStackSection from "./component/3.techStack/TechStackSection";
+import ProjectSection from "./component/4.project/ProjectSection";
 
 //
 // const SectionHeightArr: number[] = [2, 3, 2, 2]
@@ -42,6 +43,7 @@ const App: React.FC = () => {
             <PersonInfoSection/>
             <CareerSection />
             <TechStackSection />
+            <ProjectSection />
             {/*<CareerSection/>*/}
             {/*<Section3/>*/}
             {/*<Section4/>*/}

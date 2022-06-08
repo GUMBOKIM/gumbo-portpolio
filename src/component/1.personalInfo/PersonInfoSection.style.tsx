@@ -5,9 +5,10 @@ export const PersonInfoContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  margin-top: 10vh;
+  
   > div {
-    margin-bottom: 10px;
+    margin-bottom: 4vh;
   }
 `
 
@@ -17,6 +18,10 @@ export const PersonInfoTitle = styled.div`
   line-height: 1;
   letter-spacing: 0.125em;
   text-align: center;
+`
+
+export const PersonInfoTitleBottom = styled.div`
+  font-size: large;
 `
 
 export const ProfileImg = styled.div`
@@ -34,9 +39,6 @@ export const ProfileImg = styled.div`
   }
 `
 
-export const PersonInfoTitleBottom = styled.div`
-  font-size: large;
-`
 
 export const PersonInfoContents = styled.div`
   font-size: large;
@@ -48,6 +50,7 @@ export const ContactItemsContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 5vh;
   
   > div {
     margin-left: 1%;
