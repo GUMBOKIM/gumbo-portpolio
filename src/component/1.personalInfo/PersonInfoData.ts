@@ -26,6 +26,12 @@ export const ContactData: ContactDataProps[] = [
     },
     {
         type: "phone",
+        name: "kakao",
+        location: "img/contact/kakao.png",
+        destination: "http://qr.kakao.com/talk/BPlXC40l1V3ar3EZ08auO3mO7bs-"
+    },
+    {
+        type: "phone",
         name: "phone-message",
         location: "img/contact/phone-message.png",
         destination: "sms:010-9929-4805"

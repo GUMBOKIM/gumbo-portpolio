@@ -34,9 +34,15 @@ const PersonInfoSection: React.FC = () => {
                                                     location={data.location}
                                                     onClick={() => window.open(data.destination, '_blank')}/>
                             } else if (isMobile && data.type === 'phone') {
+                                if(data.name === 'kakao'){
+                                    return <ContactItem key={data.name}
+                                                        location={data.location}
+                                                        onClick={() => window.open(data.destination, '_blank')}/>
+                                } else {
                                     return <ContactItem key={data.name}
                                                         location={data.location}
                                                         onClick={() => document.location.href = data.destination}/>
+                                }
                             } else {
                                 return null;
                             }
