@@ -9,6 +9,7 @@ export const CareerSectionContainer = styled.div`
 
 export const CareerSectionDivider = styled.div`
   width: 60%;
+  min-width: 500px;
   height: 2px;
   margin: 30px 0;
   background-color: #525e65;

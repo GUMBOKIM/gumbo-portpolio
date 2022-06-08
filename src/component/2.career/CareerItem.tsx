@@ -12,8 +12,9 @@ const CareerItemContainer = styled.div`
   display: flex;
   align-items: center;
   width: 60%;
+  min-width: 500px;
   margin: 10px 0;
-
+  
   div:nth-of-type(1) {
     width: 200px;
   }
