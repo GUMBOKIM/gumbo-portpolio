@@ -27,7 +27,7 @@ export const PageBackGroundEffect: React.FC = () => {
 
     return (
         <>
-            { pageSizeInfo.pageHeight !== 0 && createEffectItems(30)}
+            { pageSizeInfo.pageHeight !== 0 && createEffectItems(10)}
         </>
     )
 }
