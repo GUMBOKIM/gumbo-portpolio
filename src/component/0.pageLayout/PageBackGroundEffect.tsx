@@ -7,8 +7,7 @@ export interface PageSizeInfo {
     pageWidth: number;
 }
 
-
-export const PageLayoutEffect: React.FC = () => {
+export const PageBackGroundEffect: React.FC = () => {
     const [pageSizeInfo, setPageSizeInfo] = useState<PageSizeInfo>({pageHeight: 0, pageWidth: 0});
 
     useEffect(() => {
@@ -21,11 +20,10 @@ export const PageLayoutEffect: React.FC = () => {
     const createEffectItems = (iter : number) => {
         let items = [];
         for(let i = 0; i < iter; i++){
-            items.push(<EffectItem pageSizeInfo={pageSizeInfo}/>);
+            items.push(<EffectItem key={i} pageSizeInfo={pageSizeInfo}/>);
         }
         return items;
     }
-
 
     return (
         <>

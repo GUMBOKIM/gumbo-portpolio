@@ -11,7 +11,7 @@ const PersonInfoSection: React.FC = () => {
     return (
         <PersonInfoContainer>
             <PersonInfoTitle>
-                To be Full-Stack Developer
+                To be Steady Developer
             </PersonInfoTitle>
             <PersonInfoTitleBottom>
                 개발자 김대희

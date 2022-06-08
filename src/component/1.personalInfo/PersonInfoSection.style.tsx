@@ -22,7 +22,7 @@ export const PersonInfoTitle = styled.div`
 `
 
 export const ProfileImg = styled.div`
-  background: url("img/ProfileImg.png");
+  background: url("img/profile/ProfileImg.png");
   background-size: cover;
 
   opacity: 0.8;

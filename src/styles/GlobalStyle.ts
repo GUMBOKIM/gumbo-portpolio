@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
@@ -25,6 +25,9 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     width: 100%;
     height: 100%;
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;
 

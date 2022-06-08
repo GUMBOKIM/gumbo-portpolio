@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, {ReactNode} from "react";
 import './PageLayout.css'
-import {PageLayoutEffect} from "./PageLayoutEffect";
+import {PageBackGroundEffect} from "./PageBackGroundEffect";
 
 const PageBackGround = styled.div`
   width: 100vw;
@@ -20,10 +20,9 @@ const PageContainer = styled.div`
   z-index: 2;
 
   @media(max-width: 1080px) {
-    width: 100%;
+    width: 90vw;
   }
-
-
+  
   > div {
     margin: 20px 0;
   }
@@ -32,7 +31,7 @@ const PageContainer = styled.div`
 export const PageLayout: React.FC<{ children: ReactNode }> = ({children}) => {
     return (
         <PageBackGround>
-            <PageLayoutEffect/>
+            <PageBackGroundEffect/>
             <PageContainer className='font'>
                 {children}
             </PageContainer>

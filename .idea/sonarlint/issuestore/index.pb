@@ -8,7 +8,3 @@ J
 src/component/Section3.tsx,4\0\40df03bb5ce744ae65458b7280cb89e845ff83d4
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-I
-src/styles/GlobalStyle.ts,8\7\87b78df561f347b8466db8a39773f00fd3374972
-X
-(src/component/2.career/CareerSection.tsx,e\7\e70e9a5c23fa659bae3f74a2833d2a36a600d9c3

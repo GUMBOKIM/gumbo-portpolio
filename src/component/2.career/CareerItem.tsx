@@ -5,18 +5,25 @@ export interface CareerItemProps {
     title: string;
     startDate: string;
     endDate?: string;
-    description: string;
+    description: string[];
 }
 
 const CareerItemContainer = styled.div`
+  position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 60%;
-  min-width: 500px;
-  margin: 10px 0;
+  width: 90%;
+  margin-bottom: 10px;
   
-  div:nth-of-type(1) {
-    width: 200px;
+  > div:nth-of-type(1) {
+    width: 40%;
+    max-width: 200px;
+  }
+
+  > div:nth-of-type(2) {
+    width: 60%;
+    max-width: 200px;
   }
 `
 
@@ -33,16 +40,16 @@ const CareerItemDescription = styled.div`
 `
 
 export const CareerItem: React.FC<{ props: CareerItemProps }> = ({props}) => {
-
     return (
         <CareerItemContainer>
             <div>
                 <CareerItemTitle>{props.title}</CareerItemTitle>
                 <CareerItemPeriod>{props.startDate} ~ {props.endDate}</CareerItemPeriod>
             </div>
-            <CareerItemDescription>{props.description}</CareerItemDescription>
+            <CareerItemDescription>
+                {props.description.map(description =>  <span>{description}<br/></span>)}
+            </CareerItemDescription>
         </CareerItemContainer>
-
     );
 }
 
