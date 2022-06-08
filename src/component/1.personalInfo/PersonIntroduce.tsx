@@ -13,7 +13,7 @@ const IntroduceContainer = styled.div`
 const IntroduceContent = styled.div`
   position: relative;
   transform-origin: 50% 100%;
-  animation: textUp 1s linear;
+  //animation: textUp 1s linear;
 
   @keyframes textUp {
     0% {
@@ -30,7 +30,7 @@ export const PersonIntroduce: React.FC = () => {
         <IntroduceContainer>
             <IntroduceContent>
                 <p>끊임없이 움직이는,</p>
-                <p>항상 유쾌한 개발자 김대희입니다.</p>
+                <p>유쾌한 개발자 김대희입니다.</p>
             </IntroduceContent>
         </IntroduceContainer>
     )

@@ -2,56 +2,56 @@ import {TechStackItemProps} from "./TechStackItem";
 
 export const LanguageData : TechStackItemProps[] = [
     {
-        image: "img/language/java.png",
+        location: "img/language/java.png",
         name: "Java"
     },
     {
-        image: "img/language/javascript.png",
+        location: "img/language/javascript.png",
         name: "JS"
     },
     {
-        image: "img/language/typescript.png",
+        location: "img/language/typescript.png",
         name: "TS"
     }
 ]
 
 export const BackEndData : TechStackItemProps[] = [
     {
-        image: "img/backend/spring.png",
+        location: "img/backend/spring.png",
         name: "Spring"
     },
     {
-        image: "img/backend/mybatis.jpg",
+        location: "img/backend/mybatis.jpg",
         name: "MyBatis"
     },    {
-        image: "img/backend/jpa.png",
+        location: "img/backend/jpa.png",
         name: "JPA"
     },    {
-        image: "img/backend/querydsl.png",
+        location: "img/backend/querydsl.png",
         name: "Query\nDSL"
     },    {
-        image: "img/backend/mysql.png",
+        location: "img/backend/mysql.png",
         name: "MYSQL"
     },    {
-        image: "img/backend/mssql.png",
+        location: "img/backend/mssql.png",
         name: "MSSQL"
     },    {
-        image: "img/backend/jenkins.png",
+        location: "img/backend/jenkins.png",
         name: "Jenkins"
     },
 ]
 
 export const FrontEndData : TechStackItemProps[] = [
     {
-        image: "img/frontend/react.png",
+        location: "img/frontend/react.png",
         name: "React"
     },
     {
-        image: "img/frontend/mobx.png",
+        location: "img/frontend/mobx.png",
         name: "MobX"
     },
     {
-        image: "img/frontend/react-query.png",
+        location: "img/frontend/react-query.png",
         name: "React\nQuery"
     },
 ]

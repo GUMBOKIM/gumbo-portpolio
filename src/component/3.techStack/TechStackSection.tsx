@@ -10,7 +10,6 @@ const TechStackItemsContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 1% 0 20px;
   text-align: center;
 `
 
@@ -25,19 +24,19 @@ const TechStackSection: React.FC = () => {
                 Language
             </SectionSubTitle>
             <TechStackItemsContainer>
-                {LanguageData.map(language => <TechStackItem key={language.name} image={language.image} name={language.name}/>)}
+                {LanguageData.map(language => <TechStackItem key={language.name} location={language.location} name={language.name}/>)}
             </TechStackItemsContainer>
             <SectionSubTitle>
                 BackEnd
             </SectionSubTitle>
             <TechStackItemsContainer>
-                {BackEndData.map(language => <TechStackItem key={language.name} image={language.image} name={language.name}/>)}
+                {BackEndData.map(language => <TechStackItem key={language.name} location={language.location} name={language.name}/>)}
             </TechStackItemsContainer>
             <SectionSubTitle>
                 FrontEnd
             </SectionSubTitle>
             <TechStackItemsContainer>
-                {FrontEndData.map(language => <TechStackItem key={language.name} image={language.image} name={language.name}/>)}
+                {FrontEndData.map(language => <TechStackItem key={language.name} location={language.location} name={language.name}/>)}
             </TechStackItemsContainer>
         </SectionContainer>
     );

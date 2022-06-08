@@ -1,5 +1,16 @@
 import React from "react";
-import {SectionContainer, SectionSubTitle, SectionTitle, SectionTitleDivider} from "../CommonComponent";
+import {SectionContainer, SectionTitle, SectionTitleDivider} from "../CommonComponent";
+import styled from "styled-components";
+import {ProjectItem} from "./ProjectItem";
+
+const ProjectItemsContainer = styled.div`
+  width: 80%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+`
 
 const ProjectSection: React.FC = () => {
     return (
@@ -8,12 +19,12 @@ const ProjectSection: React.FC = () => {
                 Project
             </SectionTitle>
             <SectionTitleDivider/>
-            <SectionSubTitle>
-                BackEnd
-            </SectionSubTitle>
-            <SectionSubTitle>
-                FrontEnd
-            </SectionSubTitle>
+            <ProjectItemsContainer>
+                <ProjectItem/>
+                <ProjectItem/>
+                <ProjectItem/>
+                <ProjectItem/>
+            </ProjectItemsContainer>
         </SectionContainer>
     );
 }

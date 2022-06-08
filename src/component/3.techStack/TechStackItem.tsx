@@ -17,12 +17,12 @@ const TechStackItemContainer = styled.div`
   font-size: x-large;
 `
 
-const TechStackItemLogo = styled.div<{ image: string }>`
+const TechStackItemLogo = styled.div<{ location: string }>`
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  background: white url(${props => props.image});
+  background: white url(${props => props.location});
   background-size: cover;
 
   :hover {
@@ -32,13 +32,13 @@ const TechStackItemLogo = styled.div<{ image: string }>`
 `
 
 export interface TechStackItemProps {
-    image: string;
+    location: string;
     name: string;
 }
 
-export const TechStackItem: React.FC<TechStackItemProps> = ({image, name}) => {
+export const TechStackItem: React.FC<TechStackItemProps> = ({location, name}) => {
     return <TechStackItemContainer>
         <div>{name}</div>
-        <TechStackItemLogo image={image}/>
+        <TechStackItemLogo location={location}/>
     </TechStackItemContainer>
 }

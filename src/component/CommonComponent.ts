@@ -22,4 +22,5 @@ export const SectionTitleDivider = styled.div`
 
 export const SectionSubTitle = styled.div`
   font-size: x-large;
+  margin: 2vh 0;
 `
