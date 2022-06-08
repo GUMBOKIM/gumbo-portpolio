@@ -62,4 +62,7 @@ export const ContactItem = styled.div<{location: string}>`
   background: white url(${props => props.location});
   background-size: cover;
   border-radius: 15px;
+  :hover {
+    cursor:pointer;
+  }
 `

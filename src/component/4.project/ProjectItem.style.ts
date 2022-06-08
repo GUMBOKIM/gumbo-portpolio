@@ -6,6 +6,7 @@ export const ProjectItemContainer = styled.div`
   height: 120px;
   margin: 3%;
   border-radius: 20px;
+  z-index: 3;
 
   display: flex;
   justify-content: space-between;
@@ -20,6 +21,10 @@ export const ProjectItemContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  :hover {
+    cursor:pointer;
   }
 `
 

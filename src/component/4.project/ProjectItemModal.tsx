@@ -9,6 +9,7 @@ const ModalBackGround = styled.div`
   height: 100vh;
   animation: changeColor 1s linear;
   animation-fill-mode: forwards;
+  z-index: 4;
 
   display: flex;
   justify-content: center;
