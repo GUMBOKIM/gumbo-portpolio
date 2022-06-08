@@ -1,11 +1,15 @@
 import React from "react";
 import {
+    ContactItem,
+    ContactItemsContainer,
     PersonInfoContainer,
     PersonInfoContents,
     PersonInfoTitle,
     PersonInfoTitleBottom,
     ProfileImg
 } from "./PersonInfoSection.style";
+import {ContactData} from "./PersonInfoData";
+import {isMobile} from "react-device-detect";
 
 const PersonInfoSection: React.FC = () => {
     return (
@@ -18,8 +22,28 @@ const PersonInfoSection: React.FC = () => {
             </PersonInfoTitleBottom>
             <ProfileImg/>
             <PersonInfoContents>
-                {'const work = (everything : any) => 꿀잼;'}
+                {'const develop = (everything : any) => 행복 :)'}
             </PersonInfoContents>
+            <ContactItemsContainer>
+                {
+                    ContactData.map(
+                        data => {
+                            if (data.type === 'link') {
+                                return <ContactItem key={data.name}
+                                                    location={data.location}
+                                                    onClick={() => window.open(data.destination, '_blank')}/>
+                            } else if (isMobile && data.type === 'phone') {
+                                    return <ContactItem key={data.name}
+                                                        location={data.location}
+                                                        onClick={() => document.location.href = data.destination}/>
+                            } else {
+                                return null;
+                            }
+                        }
+                    )
+                }
+            </ContactItemsContainer>
+
         </PersonInfoContainer>
     );
 }

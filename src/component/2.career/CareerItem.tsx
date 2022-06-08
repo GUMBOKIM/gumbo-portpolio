@@ -47,7 +47,7 @@ export const CareerItem: React.FC<{ props: CareerItemProps }> = ({props}) => {
                 <CareerItemPeriod>{props.startDate} ~ {props.endDate}</CareerItemPeriod>
             </div>
             <CareerItemDescription>
-                {props.description.map(description =>  <span>{description}<br/></span>)}
+                {props.description.map(description =>  <span key={description}>{description}<br/></span>)}
             </CareerItemDescription>
         </CareerItemContainer>
     );
