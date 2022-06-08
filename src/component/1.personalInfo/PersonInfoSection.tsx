@@ -25,6 +25,7 @@ const PersonInfoSection: React.FC = () => {
             <PersonInfoContents>
                 {'const develop = (everything : any) => 행복 :)'}
             </PersonInfoContents>
+            <PersonIntroduce/>
             <ContactItemsContainer>
                 {
                     ContactData.map(
@@ -50,7 +51,6 @@ const PersonInfoSection: React.FC = () => {
                     )
                 }
             </ContactItemsContainer>
-            <PersonIntroduce/>
         </PersonInfoContainer>
     );
 }

@@ -28,7 +28,7 @@ export const ProfileImg = styled.div`
   background: url("img/profile/ProfileImg.png");
   background-size: cover;
 
-  opacity: 0.8;
+  opacity: 1;
   border-radius: 50%;
   width: 200px;
   height: 200px;

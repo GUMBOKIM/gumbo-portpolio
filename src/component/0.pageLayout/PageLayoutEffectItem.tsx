@@ -8,11 +8,11 @@ const Gear = styled.div<{ pageSizeInfo: PageSizeInfo, delay: number, position: n
   position: absolute;
   width: 10px;
   height: 10px;
-  top: -20px;
+  top: -50px;
   left: ${props => props.position}px;
 
   z-index: 1;
-  opacity: 0.5;
+  opacity: 1;
   display: flex;
 
   @keyframes move {
@@ -24,7 +24,7 @@ const Gear = styled.div<{ pageSizeInfo: PageSizeInfo, delay: number, position: n
     }
   }
 
-  animation: move 20s ${props => props.delay}s infinite linear;
+  animation: move 40s ${props => props.delay}s infinite linear;
 `
 
 const SVG = styled.div`
@@ -40,18 +40,18 @@ const SVG = styled.div`
     }
   }
 
-  animation: rolling 2s infinite linear;
+  animation: rolling 4s infinite linear;
 `
 
 
 export const EffectItem: React.FC<{ pageSizeInfo: PageSizeInfo }> = ({pageSizeInfo}) => {
-    const delay = Math.floor(Math.random() * 20)
+    const delay = Math.floor(Math.random() * 40)
     const position = Math.floor(Math.random() * pageSizeInfo.pageWidth);
 
     return (
         <Gear pageSizeInfo={pageSizeInfo} delay={delay} position={position}>
             <SVG>
-                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 300 300" fill="white"
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="30px" viewBox="0 0 300 300" fill="white"
                      preserveAspectRatio="xMidYMid meet">
                     <g>
                         <g>
