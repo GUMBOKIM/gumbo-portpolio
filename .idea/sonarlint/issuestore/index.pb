@@ -1,7 +1,14 @@
 
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-A
-package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
 =
 tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+J
+src/component/Section3.tsx,4\0\40df03bb5ce744ae65458b7280cb89e845ff83d4
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+I
+src/styles/GlobalStyle.ts,8\7\87b78df561f347b8466db8a39773f00fd3374972
+X
+(src/component/2.career/CareerSection.tsx,e\7\e70e9a5c23fa659bae3f74a2833d2a36a600d9c3
