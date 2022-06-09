@@ -27,11 +27,9 @@ export const ProjectSectionData: ProjectItemProps[] = [
                 "- LMS(학원 관리 서비스)\n" +
                 "    - 학원, 직원, 학생 관리\n" +
                 "    - 교육 프로그램 및 수업 관리\n" +
+                "\n" +
                 "담당 업무\n" +
-                "- 로그인 처리\n" +
-                "    - JWT\n" +
-                "    - Session\n" +
-                "    - 인가 처리(filter 구현) - IP, 페이지, 권한\n" +
+                "- 인증 및 인가 처리\n" +
                 "- 파일 업로드 처리\n" +
                 "    - 고객사 NAS 마운트\n" +
                 "- 서비스 부분\n" +
@@ -53,6 +51,7 @@ export const ProjectSectionData: ProjectItemProps[] = [
                 "- LMS(학원 관리 서비스)\n" +
                 "    - 학원, 직원, 학생 관리\n" +
                 "    - 교육 프로그램 및 수업 관리\n" +
+                "\n" +
                 "담당 업무\n" +
                 "- SLACK WEBHOOK 기능 추가\n" +
                 "- 메일 보내기 기능 추가\n" +
@@ -72,10 +71,11 @@ export const ProjectSectionData: ProjectItemProps[] = [
             skill: "SpringBoot, JPA, ThymeLeaf, MySQL",
             content:
                 "서비스 개요\n" +
-                "- 고객사 자동 입고\n" +
-                "    - 고객사 API 사용 입고 현황 조회(크롤링) 및 입고 처리\n" +
+                "- 고객사 자동 입고 및 재고 관리\n" +
+                "    - 재고 현황 조회(크롤링) 및 입고 처리\n" +
                 "    - 자재 및 BOM 관리\n" +
                 "    - 재고 입출고 및 현황 기능\n" +
+                "\n" +
                 "구현한 기능\n" +
                 "- 재고 현황 조회 및 자동 입고 처리\n" +
                 "    - API 호출 - 크롤링\n" +
@@ -98,6 +98,7 @@ export const ProjectSectionData: ProjectItemProps[] = [
             content:
                 "서비스 개요\n" +
                 "- 번개장터 클론\n" +
+                "\n" +
                 "구현한 기능\n" +
                 "- 상점 기능\n" +
                 "- 상품 관리 기능\n" +

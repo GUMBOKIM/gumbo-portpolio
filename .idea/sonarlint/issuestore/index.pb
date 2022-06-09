@@ -26,8 +26,6 @@ Y
 )src/component/0.pageLayout/PageLayout.css,3\9\392f3a4ea518d67002942962e6e2aa3caf7486d2
 ;
 src/App.tsx,8\3\835da56f32df714aaed6285a5b7fc3a7807851e4
-[
-+src/component/2.career/CareerSectionData.ts,1\2\1241ebd55c9b8993c9a60a53e2b29b156cfd28f3
 I
 src/styles/GlobalStyle.ts,8\7\87b78df561f347b8466db8a39773f00fd3374972
 P
