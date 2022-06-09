@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 const ModalBackGround = styled.div`
   top: 0;
   position: fixed;
@@ -40,31 +39,37 @@ const ModalBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  
 `
 
 const ModalTitle = styled.div`
+  width: 90%;
+  
   font-size: x-large;
   height: 15%;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
 const ModalSkill = styled.div`
-  font-size: large;
-  height: 5%;
-
   display: flex;
   align-items: center;
-  justify-content: center;
+  
+  width: 90%;
+  font-size: medium;
+  height: 10%;
+  padding: 1%;
 `
+
 const ModalContent = styled.div`
-  font-size: large;
-  height: 65%;
-  width: 100%;
+  font-size: small;
+  height: 60%;
+  width: 90%;
   padding: 5%;
+  text-align: left;
+  white-space: pre-wrap;
+  line-height: 1rem;
 `
 
 const ModalLink = styled.div`
@@ -79,22 +84,22 @@ const ModalLink = styled.div`
 `
 
 export interface ProjectItemModalProps {
-    title?: string;
-    skill?: string;
-    content?: string;
+    title: string;
+    skill: string;
+    content: string;
+    link: string;
 }
 
-
-export const ProjectItemModal: React.FC<{ modalProps?: ProjectItemModalProps, closeModal: () => void }> = ({closeModal}) => {
+export const ProjectItemModal: React.FC<{ desc: ProjectItemModalProps, closeModal: () => void }> = ({desc, closeModal}) => {
 
     return (
         <>
             <ModalBackGround onClick={() => closeModal()}>
                 <ModalBox>
-                    <ModalTitle>프로젝트 이름입니다.</ModalTitle>
-                    <ModalSkill>기술입니다. 기술입니다. 기술입니다.</ModalSkill>
-                    <ModalContent>{`설명입니다. \n 설명입니다. \n설명입니다. \n설명입니다. \n설명입니다. \n설명입니다. \n`} </ModalContent>
-                    <ModalLink onClick={() => window.open('http://www.naver.com/', '_blank')}>참조링크</ModalLink>
+                    <ModalTitle>{desc.title}</ModalTitle>
+                    <ModalSkill>{desc.skill}</ModalSkill>
+                    <ModalContent><p>{desc.content}</p></ModalContent>
+                    <ModalLink onClick={() => window.open(desc.link, '_blank')}>링크</ModalLink>
                 </ModalBox>
             </ModalBackGround >
         </>

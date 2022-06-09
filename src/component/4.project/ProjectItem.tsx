@@ -9,27 +9,27 @@ import {
 import {ProjectItemModal, ProjectItemModalProps} from "./ProjectItemModal";
 
 export interface ProjectItemProps {
-    divide?: string;
-    title?: string;
-    location?: string;
-    startDate?: string;
+    divide: string;
+    title: string;
+    location: string;
+    startDate: string;
     endDate?: string;
-    description?: ProjectItemModalProps
+    description: ProjectItemModalProps
 }
 
-export const ProjectItem: React.FC<ProjectItemProps> = ({title, location, startDate, endDate, description}) => {
+export const ProjectItem: React.FC<{data: ProjectItemProps}> = ({data}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     return (
         <>
             <ProjectItemContainer onClick={() => setIsModalOpen(true)}>
-                <ProjectItemDivide>FE</ProjectItemDivide>
-                <ProjectItemTitle>Poly</ProjectItemTitle>
-                <ProjectItemPeriod>2021. 08 ~ 2021. 08</ProjectItemPeriod>
-                <ProjectItemImage location={"img/profile/ProfileImg.png"}/>
+                <ProjectItemDivide>{data.divide}</ProjectItemDivide>
+                <ProjectItemTitle>{data.title}</ProjectItemTitle>
+                <ProjectItemPeriod>{data.startDate} ~ {data.endDate}</ProjectItemPeriod>
+                <ProjectItemImage location={data.location}/>
             </ProjectItemContainer>
             {
                 isModalOpen &&
-                <ProjectItemModal closeModal={() => setIsModalOpen(false)}/>
+                <ProjectItemModal desc={data.description} closeModal={() => setIsModalOpen(false)}/>
             }
         </>
     )

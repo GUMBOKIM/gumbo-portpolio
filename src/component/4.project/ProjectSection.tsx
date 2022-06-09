@@ -2,6 +2,7 @@ import React from "react";
 import {SectionContainer, SectionTitle, SectionTitleDivider} from "../CommonComponent";
 import styled from "styled-components";
 import {ProjectItem} from "./ProjectItem";
+import {ProjectSectionData} from "./ProjectSectionData";
 
 const ProjectItemsContainer = styled.div`
   width: 80%;
@@ -20,10 +21,7 @@ const ProjectSection: React.FC = () => {
             </SectionTitle>
             <SectionTitleDivider/>
             <ProjectItemsContainer>
-                <ProjectItem/>
-                <ProjectItem/>
-                <ProjectItem/>
-                <ProjectItem/>
+                {ProjectSectionData.map(data => <ProjectItem key={data.title} data={data}/>)}
             </ProjectItemsContainer>
         </SectionContainer>
     );

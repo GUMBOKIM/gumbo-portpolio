@@ -17,28 +17,35 @@ export const ProjectItemContainer = styled.div`
   color: black;
   font-size: medium;
 
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   :hover {
     cursor:pointer;
   }
 `
 
 export const ProjectItemDivide = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   height: 30px;
-  font-size: x-large;
+  font-size: large;
 `
 
 export const ProjectItemTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   height: 70px;
-  font-size: xx-large;
+  font-size: large;
+
 `
 
 export const ProjectItemPeriod = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   height: 20px;
   font-size: x-small;
 `
@@ -48,13 +55,14 @@ export const ProjectItemImage = styled.div<{ location?: string }>`
   width: 100px;
   height: 100px;
   border-radius: 20px;
-  background: white url(${props => props.location});
+  background: white url(${props => props.location}) no-repeat center;
   background-size: contain;
-  opacity: 0.2;
+
+  opacity: 1;
 
   :hover {
     transition: opacity 1s;
-    opacity: 0.9;
+    opacity: 0.1;
   }
 `
 
