@@ -39,30 +39,7 @@ export const ProfileImg = styled.div`
   }
 `
 
-
 export const PersonInfoContents = styled.div`
   font-size: large;
   line-height: 30px;
-`
-
-export const ContactItemsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 5vh;
-  
-  > div {
-    margin-left: 1%;
-  }
-`
-export const ContactItem = styled.div<{location: string}>`
-  width: 25px;
-  height: 25px;
-  background: white url(${props => props.location});
-  background-size: cover;
-  border-radius: 15px;
-  :hover {
-    cursor:pointer;
-  }
 `

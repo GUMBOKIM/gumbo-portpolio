@@ -9,7 +9,7 @@ const PageBackGround = styled.div`
   justify-content: center;
   background-color: #2E3445;
   z-index: 0;
-  
+
 `;
 
 const PageContainer = styled.div`

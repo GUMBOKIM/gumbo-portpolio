@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import './PageLayout.css'
 import {EffectItem} from "./PageLayoutEffectItem";
 
 export interface PageSizeInfo {

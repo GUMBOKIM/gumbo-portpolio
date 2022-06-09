@@ -1,16 +1,13 @@
 import React from "react";
 import {
-    ContactItem,
-    ContactItemsContainer,
     PersonInfoContainer,
     PersonInfoContents,
     PersonInfoTitle,
     PersonInfoTitleBottom,
     ProfileImg
 } from "./PersonInfoSection.style";
-import {ContactData} from "./PersonInfoData";
-import {isMobile} from "react-device-detect";
 import {PersonIntroduce} from "./PersonIntroduce";
+import {ContactItems} from "./ContactItems";
 
 const PersonInfoSection: React.FC = () => {
     return (
@@ -26,31 +23,7 @@ const PersonInfoSection: React.FC = () => {
                 {'const develop = (everything : any) => 행복 :)'}
             </PersonInfoContents>
             <PersonIntroduce/>
-            <ContactItemsContainer>
-                {
-                    ContactData.map(
-                        data => {
-                            if (data.type === 'link') {
-                                return <ContactItem key={data.name}
-                                                    location={data.location}
-                                                    onClick={() => window.open(data.destination, '_blank')}/>
-                            } else if (isMobile && data.type === 'phone') {
-                                if(data.name === 'kakao'){
-                                    return <ContactItem key={data.name}
-                                                        location={data.location}
-                                                        onClick={() => window.open(data.destination, '_blank')}/>
-                                } else {
-                                    return <ContactItem key={data.name}
-                                                        location={data.location}
-                                                        onClick={() => document.location.href = data.destination}/>
-                                }
-                            } else {
-                                return null;
-                            }
-                        }
-                    )
-                }
-            </ContactItemsContainer>
+            <ContactItems/>
         </PersonInfoContainer>
     );
 }

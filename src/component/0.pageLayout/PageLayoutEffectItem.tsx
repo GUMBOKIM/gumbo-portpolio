@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import './PageLayout.css'
 import {PageSizeInfo} from "./PageBackGroundEffect";
-
 
 const Gear = styled.div<{ pageSizeInfo: PageSizeInfo, delay: number, position: number }>`
   position: absolute;

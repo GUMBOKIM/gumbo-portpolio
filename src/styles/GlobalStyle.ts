@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   * {
     box-sizing: border-box;
+    font-family: 'Do Hyeon';
+    color: #dbe8d4;
   }
   body{
     background-color: #ffffff;
@@ -33,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     overflow-x: hidden;
   }
-
 `;
 
 export default GlobalStyle;
