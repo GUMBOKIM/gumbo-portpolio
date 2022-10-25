@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React, {ReactNode} from "react";
-import './PageLayout.css'
 import {PageBackGroundEffect} from "./PageBackGroundEffect";
 
 const PageBackGround = styled.div`
@@ -9,7 +8,6 @@ const PageBackGround = styled.div`
   justify-content: center;
   background-color: #2E3445;
   z-index: 0;
-
 `;
 
 const PageContainer = styled.div`
