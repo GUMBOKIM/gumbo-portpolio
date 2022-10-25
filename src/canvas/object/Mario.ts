@@ -27,6 +27,7 @@ class Mario extends CanvasSquare {
     direction: Direction = 'LEFT';
     xStatus: XStatus = 'STOP';
     yStatus: YStatus = 'STOP';
+    jumpMax = 0;
 
     image: HTMLImageElement;
 
@@ -44,7 +45,8 @@ class Mario extends CanvasSquare {
     keyDown(keyCode: string) {
         switch (keyCode) {
             // Left
-            case 'KeyA' || 'ArrowLeft' :
+            case 'KeyA'  :
+            case 'ArrowLeft':
                 if (this.xStatus === 'STOP') {
                     if (this.direction === 'RIGHT') this.tic = 0;
                     this.direction = 'LEFT'
@@ -52,7 +54,8 @@ class Mario extends CanvasSquare {
                 }
                 break;
             // Right
-            case 'KeyD' || 'ArrowRight' :
+            case 'KeyD' :
+            case 'ArrowRight':
                 if (this.xStatus === 'STOP') {
                     if (this.direction === 'LEFT') this.tic = 0;
                     this.direction = 'RIGHT'
@@ -61,7 +64,10 @@ class Mario extends CanvasSquare {
                 break;
             // Up
             case 'Space' :
-                if (this.yStatus === "STOP") this.yStatus = 'UP';
+                if (this.yStatus === "STOP"){
+                    this.jumpMax = this.location.y - this.scale * 60;
+                    this.yStatus = 'UP';
+                }
                 break;
         }
     }
@@ -69,17 +75,19 @@ class Mario extends CanvasSquare {
     keyUp(keyCode: string) {
         switch (keyCode) {
             // Left
-            case 'KeyA' || 'ArrowLeft' :
+            case 'KeyA':
+            case  'ArrowLeft':
                 if (this.xStatus === 'LEFT') this.xStatus = 'STOP';
                 break;
             // Right
-            case 'KeyD' || 'ArrowRight' :
+            case 'KeyD' :
+            case 'ArrowRight':
                 if (this.xStatus === 'RIGHT') this.xStatus = 'STOP';
                 break;
         }
     }
 
-    locate(){
+    locate() {
         this.move();
     }
 
@@ -101,6 +109,10 @@ class Mario extends CanvasSquare {
             default:
                 break;
         }
+        console.log(this.context.canvas.width, this.location.x);
+        if(this.location.x > this.context.canvas.width) this.location.x = this.context.canvas.width;
+        if(this.location.x < 0) this.location.x = 0;
+
         // Y
         switch (this.yStatus) {
             case "UP":
@@ -117,24 +129,22 @@ class Mario extends CanvasSquare {
     private drawSprite() {
         let sx;
         if (this.yStatus === 'STOP') {
-            if (this.xStatus === 'STOP') {
-                sx = Sprites.STOP[this.direction][0];
-            } else {
-                sx = Sprites.MOVE[this.direction][Math.floor(this.tic / 5) % 3];
-            }
-        } else {
-            sx = Sprites.JUMP[this.direction][0];
-        }
+            if (this.xStatus === 'STOP') sx = Sprites.STOP[this.direction][0];
+            else sx = Sprites.MOVE[this.direction][Math.floor(this.tic / 5) % 3];
+        } else sx = Sprites.JUMP[this.direction][0];
         this.context.drawImage(this.image, sx, 0, 16, 16, this.location.x, this.location.y, 16 * this.scale, 16 * this.scale);
     }
 
     private checkJump() {
         switch (this.yStatus) {
             case "UP":
-                if (this.location.y - this.ground === -this.scale * 50) this.yStatus = 'DOWN';
+                if (this.location.y <= this.jumpMax) this.yStatus = 'DOWN';
                 break;
             case "DOWN":
-                if (this.ground - this.location.y === 0) this.yStatus = 'STOP';
+                if (this.ground <= this.location.y) {
+                    this.location.y = this.ground;
+                    this.yStatus = 'STOP';
+                }
                 break;
         }
     }
@@ -144,6 +154,32 @@ class Mario extends CanvasSquare {
         if (this.tic >= 60) {
             this.tic = 0;
         }
+    }
+
+    effectCollision() {}
+
+    isCollisionTop(canvasSquare: CanvasSquare): boolean {
+        const result = super.isCollisionTop(canvasSquare);
+        if(result && this.yStatus === "UP") this.yStatus = "DOWN";
+        return result;
+    }
+
+    isCollisionBottom(canvasSquare: CanvasSquare): boolean {
+        const result = super.isCollisionBottom(canvasSquare);
+        if(result && this.yStatus === "DOWN") this.yStatus = "STOP";
+        return result;
+    }
+
+    isCollisionLeft(canvasSquare: CanvasSquare): boolean {
+        const result = super.isCollisionLeft(canvasSquare);
+        if(result && this.xStatus === "LEFT") this.xStatus = 'STOP';
+        return result;
+    }
+
+    isCollisionRight(canvasSquare: CanvasSquare): boolean {
+        const result =  super.isCollisionRight(canvasSquare);
+        if(result && this.xStatus === 'RIGHT') this.xStatus = 'STOP';
+        return result;
     }
 }
 

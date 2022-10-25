@@ -13,7 +13,7 @@ class Block extends CanvasSquare {
     status: Status;
     scale: number;
     image: HTMLImageElement;
-    tic = 0;
+    timer = 0;
 
     constructor(location: Location, scale: number, context: CanvasRenderingContext2D) {
         super(location, {width: 16 * scale, height: 16 * scale}, context);
@@ -25,23 +25,23 @@ class Block extends CanvasSquare {
 
     draw() {
         this.drawSprite();
-        this.setTic();
+        this.countTimer();
     }
 
     private drawSprite() {
         let sx;
         if(this.status === 'INITIAL'){
-            sx = Sprites[this.status][Math.floor(this.tic / 20) % 3];
+            sx = Sprites[this.status][Math.floor(this.timer / 20) % 3];
         }else {
             sx = Sprites[this.status][0];
         }
         this.context.drawImage(this.image, sx, 0, 16, 16, this.location.x, this.location.y, 16 * this.scale, 16 * this.scale);
     }
 
-    private setTic() {
-        this.tic++;
-        if (this.tic >= 60) {
-            this.tic = 0;
+    private countTimer() {
+        this.timer++;
+        if (this.timer >= 60) {
+            this.timer = 0;
         }
     }
 }

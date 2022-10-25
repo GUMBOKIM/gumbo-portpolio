@@ -15,7 +15,11 @@ interface Coordinate {
 
 export type SquareType = 'FIXED' | 'MOVEABLE'
 
-export interface SquareVertex {
+export interface SquareVertexInfo {
+    leftX: number;
+    rightX: number;
+    topY: number;
+    bottomY: number;
     topLeft: Coordinate;
     topRight: Coordinate;
     bottomLeft: Coordinate;
@@ -34,76 +38,97 @@ abstract class CanvasSquare {
         this.context = context;
     }
 
-    locate(){};
-    draw(){};
-    effectCollision(){};
+    locate() {
+    };
+
+    draw() {
+    };
+
+    effectCollision() {
+    };
 
     // 충돌 확인
-    checkCollision(otherSquares: CanvasSquare[]) {
-        otherSquares.forEach(otherSquare => {
-            const otherType = otherSquare.type;
+    checkCollision(canvasSquares: CanvasSquare[]) {
+        canvasSquares.forEach(canvasSquare => {
+            const otherType = canvasSquare.type;
             let isCollision = false;
-            if(this.type === 'MOVEABLE' && otherType === 'FIXED'){
-                // THIS TOP - OTHER BOTTOM
-                if(this.location.y <= otherSquare.location.y + otherSquare.size.height) {
-                    this.correctCollisionTop(otherSquare.location.y + otherSquare.size.height);
+            const {topY : thisTopY, leftX : thisLeftX} = this.getVertexInfo();
+            const {topY : canvasTopY, bottomY : canvasBottomY, rightX : canvasRightX, leftX : canvasLeftX} = canvasSquare.getVertexInfo();
+            if (this.type === 'MOVEABLE' && otherType === 'FIXED') {
+                if (this.isCollisionTop(canvasSquare)) {
+                    this.correctLocation(thisLeftX, canvasBottomY);
                     isCollision = true;
                 }
-                // THIS BOTTOM - OTHER TOP
-                else if(this.location.y + this.size.height > otherSquare.location.y) {
-                    this.correctCollisionBottom(otherSquare.location.y - this.size.height);
+                if (this.isCollisionBottom(canvasSquare)) {
+                    this.correctLocation(thisLeftX, canvasTopY - this.size.height);
                     isCollision = true;
                 }
-                // THIS RIGHT - OTHER BOTTOM
-                else if(this.location.x + this.size.width > otherSquare.location.x) {
-                    this.correctCollisionRight(otherSquare.location.x - this.size.width);
+                // TODO: 왼쪽 오른쪽 충돌 부분 수정 필요 -> 비정상적으로 인식됨
+                if (this.isCollisionRight(canvasSquare)) {
+                    this.correctLocation(canvasLeftX - this.size.width, thisTopY);
                     isCollision = true;
                 }
-                // THIS LEFT - OTHER RIGHT
-                else if(this.location.x  < otherSquare.location.x + otherSquare.size.width) {
-                    this.correctCollisionLeft(otherSquare.location.x + otherSquare.size.width);
+                if (this.isCollisionLeft(canvasSquare)) {
+                    this.correctLocation(canvasRightX, thisTopY);
                     isCollision = true;
                 }
-            }else if(this.type === 'FIXED' && otherType === 'MOVEABLE'){
-                otherSquare.checkCollision([this]);
-            }else if(this.type === 'MOVEABLE' && otherType === 'MOVEABLE'){
+            } else if (this.type === 'FIXED' && otherType === 'MOVEABLE') {
+                canvasSquare.checkCollision([this]);
+            } else if (this.type === 'MOVEABLE' && otherType === 'MOVEABLE') {
                 // 언젠간 구현
             }
-            if(isCollision) {
+            if (isCollision) {
                 this.effectCollision();
-                otherSquare.effectCollision();
+                canvasSquare.effectCollision();
             }
         })
     }
 
     // 충돌 시, 위치 보정
-    private correctCollisionTop(y: number) {
-        if(this.type === 'MOVEABLE') {
+    private correctLocation(x: number, y: number) {
+        if (this.type === 'MOVEABLE') {
+            this.location.x = x;
             this.location.y = y;
         }
     }
-    private correctCollisionBottom(y: number) {
-        if(this.type === 'MOVEABLE'){
-            this.location.y = y - this.size.height;
-        }
-    }
-    private correctCollisionLeft(x: number){
-        if(this.type === 'MOVEABLE'){
-            this.location.x = x;
-        }
-    }
-    private correctCollisionRight(x: number){
-        if(this.type === 'MOVEABLE') {
-            this.location.x = x - this.size.width;
-        }
+
+    // THIS TOP - OTHER BOTTOM
+    isCollisionTop(canvasSquare: CanvasSquare): boolean {
+        const {topY : thisTopY, bottomY: thisBottomY, rightX : thisRightX, leftX : thisLeftX} = this.getVertexInfo();
+        const {topY: canvasTopY, bottomY : canvasBottomY, rightX : canvasRightX, leftX : canvasLeftX} = canvasSquare.getVertexInfo();
+        return thisBottomY > canvasTopY && thisTopY < canvasBottomY && thisRightX > canvasLeftX && thisLeftX < canvasRightX;
     }
 
-    getVertex(): SquareVertex {
+    // THIS BOTTOM - OTHER TOP
+    isCollisionBottom(canvasSquare: CanvasSquare): boolean {
+        const {topY : thisTopY, bottomY: thisBottomY, rightX : thisRightX, leftX : thisLeftX} = this.getVertexInfo();
+        const {topY: canvasTopY, bottomY : canvasBottomY, rightX : canvasRightX, leftX : canvasLeftX} = canvasSquare.getVertexInfo();
+        return thisTopY < canvasBottomY && thisBottomY > canvasTopY && thisBottomY > canvasTopY && thisRightX > canvasLeftX && thisLeftX < canvasRightX;
+    }
+
+    // THIS LEFT - OTHER RIGHT
+    isCollisionLeft(canvasSquare: CanvasSquare): boolean {
+        const {topY : thisTopY, bottomY: thisBottomY, rightX : thisRightX, leftX : thisLeftX} = this.getVertexInfo();
+        const {topY: canvasTopY, bottomY : canvasBottomY, rightX : canvasRightX, leftX : canvasLeftX} = canvasSquare.getVertexInfo();
+        return thisRightX > canvasLeftX && thisLeftX < canvasRightX && thisBottomY > canvasTopY && thisTopY < canvasBottomY;
+    }
+
+    // THIS RIGHT - OTHER LEFT
+    isCollisionRight(canvasSquare: CanvasSquare): boolean {
+        const {topY : thisTopY, bottomY: thisBottomY, rightX : thisRightX, leftX : thisLeftX} = this.getVertexInfo();
+        const {topY: canvasTopY, bottomY : canvasBottomY, rightX : canvasRightX, leftX : canvasLeftX} = canvasSquare.getVertexInfo();
+        return thisLeftX < canvasRightX && thisRightX > canvasLeftX && thisBottomY > canvasTopY && thisTopY < canvasBottomY;
+    }
+
+    getVertexInfo(): SquareVertexInfo {
+        const leftX = this.location.x;
+        const rightX = this.location.x + this.size.width;
+        const topY = this.location.y;
+        const bottomY = this.location.y + this.size.height;
         return {
-            topLeft: {x: this.location.x, y: this.location.y},
-            topRight: {x: this.location.x + this.size.width, y: this.location.y},
-            bottomRight: {x: this.location.x, y: this.location.y + this.size.height},
-            bottomLeft: {x: this.location.x + this.size.width, y: this.location.y + this.size.height}
+            leftX, rightX, topY, bottomY,
+            topLeft: {x: leftX, y: topY}, topRight: {x: rightX, y: topY},
+            bottomLeft: {x: leftX, y: bottomY}, bottomRight: {x: rightX, y: bottomY}
         };
     }
 }

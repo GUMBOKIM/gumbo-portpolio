@@ -13,19 +13,17 @@ const LandingPage: React.FC = () => {
             const context = canvas.getContext('2d');
             if (context) {
                 const block = new Block({x: 200, y: 100}, 4, context);
-                const mario = new Mario({x: 100, y: 300}, 4, context);
+                const mario = new Mario({x: 200 , y: 300}, 4, context);
                 const marioKeyDown = (e: KeyboardEvent) => mario.keyDown(e.code);
                 const marioKeyUp = (e: KeyboardEvent) => mario.keyUp(e.code);
-
                 window.addEventListener('keydown', marioKeyDown);
                 window.addEventListener('keyup', marioKeyUp);
-
                 const drawCanvas = () => {
                     requestAnimationFrame(drawCanvas);
                     context.clearRect(0, 0, canvas.width, canvas.height);
                     mario.locate();
-                    mario.draw();
                     mario.checkCollision([block]);
+                    mario.draw();
                     block.draw();
                 }
                 drawCanvas();
@@ -39,13 +37,6 @@ const LandingPage: React.FC = () => {
 }
 
 const ViewPortCanvas = styled.canvas`
-  position: fixed;
-  top: 0px;
-  height: 0px;
-
-  width: 100vw;
-  height: 100vh;
-
 `
 
 export default LandingPage;
