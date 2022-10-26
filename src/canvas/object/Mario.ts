@@ -1,8 +1,10 @@
-import CanvasSquare, {Location, SquareType} from "./CanvasSquare";
+import CanvasSquare, {Location} from "./CanvasSquare";
+import audioPlayer from "../../common/audio/AudioPlayer";
 
 type Direction = 'LEFT' | 'RIGHT'
 type XStatus = 'STOP' | 'LEFT' | 'RIGHT';
 type YStatus = 'STOP' | 'UP' | 'DOWN';
+type InteractionKind = 'LEFT' | 'RIGHT' | 'JUMP' | 'NULL';
 
 const Sprites = {
     'STOP': {
@@ -39,50 +41,61 @@ class Mario extends CanvasSquare {
         this.scale = scale;
         this.ground = this.location.y;
         this.image = new Image();
-        this.image.src = './canvas/mario.png'
+        this.image.src = './mario/image/mario.png'
     }
 
-    keyDown(keyCode: string) {
+    detectKeyInput(keyCode: string): InteractionKind {
         switch (keyCode) {
-            // Left
             case 'KeyA'  :
             case 'ArrowLeft':
+                return 'LEFT';
+            case 'KeyD' :
+            case 'ArrowRight':
+                return 'RIGHT';
+            case 'Space' :
+                return 'JUMP';
+            default:
+                return 'NULL';
+        }
+    }
+
+    startInteraction(kind: InteractionKind) {
+        switch (kind) {
+            case 'LEFT'  :
                 if (this.xStatus === 'STOP') {
                     if (this.direction === 'RIGHT') this.tic = 0;
                     this.direction = 'LEFT'
                     this.xStatus = 'LEFT';
                 }
                 break;
-            // Right
-            case 'KeyD' :
-            case 'ArrowRight':
+            case 'RIGHT' :
                 if (this.xStatus === 'STOP') {
                     if (this.direction === 'LEFT') this.tic = 0;
                     this.direction = 'RIGHT'
                     this.xStatus = 'RIGHT';
                 }
                 break;
-            // Up
-            case 'Space' :
-                if (this.yStatus === "STOP"){
+            case 'JUMP' :
+                if (this.yStatus === "STOP") {
                     this.jumpMax = this.location.y - this.scale * 60;
                     this.yStatus = 'UP';
+                    audioPlayer.play('jump');
                 }
+                break;
+            default:
                 break;
         }
     }
 
-    keyUp(keyCode: string) {
-        switch (keyCode) {
-            // Left
-            case 'KeyA':
-            case  'ArrowLeft':
+    endInteraction(kind: InteractionKind) {
+        switch (kind) {
+            case 'LEFT':
                 if (this.xStatus === 'LEFT') this.xStatus = 'STOP';
                 break;
-            // Right
-            case 'KeyD' :
-            case 'ArrowRight':
+            case 'RIGHT' :
                 if (this.xStatus === 'RIGHT') this.xStatus = 'STOP';
+                break;
+            default:
                 break;
         }
     }
@@ -97,6 +110,25 @@ class Mario extends CanvasSquare {
         this.setTic();
     }
 
+    effectCollision() {
+    }
+
+    collideTop() {
+        if (this.yStatus === "UP") this.yStatus = "DOWN";
+    }
+
+    collideBottom() {
+        if (this.yStatus === "DOWN") this.yStatus = "STOP";
+    }
+
+    collideLeft() {
+        if (this.xStatus === "LEFT") this.xStatus = 'STOP';
+    }
+
+    collideRight() {
+        if (this.xStatus === 'RIGHT') this.xStatus = 'STOP';
+    }
+
     private move() {
         // X
         switch (this.xStatus) {
@@ -109,9 +141,8 @@ class Mario extends CanvasSquare {
             default:
                 break;
         }
-        console.log(this.context.canvas.width, this.location.x);
-        if(this.location.x > this.context.canvas.width) this.location.x = this.context.canvas.width;
-        if(this.location.x < 0) this.location.x = 0;
+        if (this.location.x > this.context.canvas.width - this.size.width) this.location.x = this.context.canvas.width - this.size.width;
+        if (this.location.x < 0) this.location.x = 0;
 
         // Y
         switch (this.yStatus) {
@@ -154,32 +185,6 @@ class Mario extends CanvasSquare {
         if (this.tic >= 60) {
             this.tic = 0;
         }
-    }
-
-    effectCollision() {}
-
-    isCollisionTop(canvasSquare: CanvasSquare): boolean {
-        const result = super.isCollisionTop(canvasSquare);
-        if(result && this.yStatus === "UP") this.yStatus = "DOWN";
-        return result;
-    }
-
-    isCollisionBottom(canvasSquare: CanvasSquare): boolean {
-        const result = super.isCollisionBottom(canvasSquare);
-        if(result && this.yStatus === "DOWN") this.yStatus = "STOP";
-        return result;
-    }
-
-    isCollisionLeft(canvasSquare: CanvasSquare): boolean {
-        const result = super.isCollisionLeft(canvasSquare);
-        if(result && this.xStatus === "LEFT") this.xStatus = 'STOP';
-        return result;
-    }
-
-    isCollisionRight(canvasSquare: CanvasSquare): boolean {
-        const result =  super.isCollisionRight(canvasSquare);
-        if(result && this.xStatus === 'RIGHT') this.xStatus = 'STOP';
-        return result;
     }
 }
 
