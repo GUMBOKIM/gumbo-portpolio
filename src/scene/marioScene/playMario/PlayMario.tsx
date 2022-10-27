@@ -2,67 +2,67 @@ import Block from "../../../canvas/object/Block";
 import Mario from "../../../canvas/object/Mario";
 import Cloud from "../../../canvas/object/Cloud";
 import Ground from "../../../canvas/object/Ground";
-import React, { RefObject, useEffect, useRef } from "react";
-import { isMobile } from "react-device-detect";
+import React, {RefObject, useEffect, useRef} from "react";
+import {isMobile} from "react-device-detect";
 import useWindowResize from "../../../common/hook/useWindowResize";
 import * as S from "../MarioScene.style";
 
 const PlayMario = () => {
-  const windowSize = useWindowResize();
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const leftTouchAreaRef = useRef<HTMLDivElement>(null);
-  const centerTouchAreaRef = useRef<HTMLDivElement>(null);
-  const rightTouchAreaRef = useRef<HTMLDivElement>(null);
+    const windowSize = useWindowResize();
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const leftTouchAreaRef = useRef<HTMLDivElement>(null);
+    const centerTouchAreaRef = useRef<HTMLDivElement>(null);
+    const rightTouchAreaRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-      canvas.width = windowWidth;
-      canvas.height = windowHeight;
-      const context = canvas.getContext("2d");
-      if (context) {
-        const { block, ground, mario, cloud1, cloud2 } = createCanvasObject(
-          windowHeight,
-          windowWidth,
-          context
-        );
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            canvas.width = windowWidth;
+            canvas.height = windowHeight;
+            const context = canvas.getContext("2d");
+            if (context) {
+                const {block, ground, mario, cloud1, cloud2} = createCanvasObject(
+                    windowHeight,
+                    windowWidth,
+                    context
+                );
 
-        // 마리오 이벤트 등록
-        addEventToMario(
-          mario,
-          leftTouchAreaRef,
-          centerTouchAreaRef,
-          rightTouchAreaRef
-        );
-        const drawCanvas = () => {
-          requestAnimationFrame(drawCanvas);
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          // 이동
-          mario.locate();
-          // 충돌 체크
-          mario.checkCollision([block]);
-          // Object 그리기
-          [ground, cloud1, cloud2, mario, block].forEach((o) => o.draw());
-        };
-        drawCanvas();
-      }
-    }
-  }, [windowSize]);
+                // 마리오 이벤트 등록
+                addEventToMario(
+                    mario,
+                    leftTouchAreaRef,
+                    centerTouchAreaRef,
+                    rightTouchAreaRef
+                );
+                const drawCanvas = () => {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    // 이동
+                    mario.locate();
+                    // 충돌 체크
+                    mario.checkCollision([block]);
+                    // Object 그리기
+                    [ground, cloud1, cloud2, mario, block].forEach((o) => o.draw());
+                    requestAnimationFrame(drawCanvas);
+                };
+                drawCanvas();
+            }
+        }
+    }, [windowSize]);
 
-  return (
-    <>
-      <S.ScreenSizeCanvas ref={canvasRef} />
-      {isMobile && (
+    return (
         <>
-          <S.TouchArea ref={leftTouchAreaRef} />
-          <S.TouchArea ref={centerTouchAreaRef} />
-          <S.TouchArea ref={rightTouchAreaRef} />
+            <S.ScreenSizeCanvas ref={canvasRef} style={{zIndex: 200}}/>
+            {isMobile && (
+                <>
+                    <S.TouchArea ref={leftTouchAreaRef} style={{zIndex: 210}}/>
+                    <S.TouchArea ref={centerTouchAreaRef} style={{zIndex: 210}}/>
+                    <S.TouchArea ref={rightTouchAreaRef} style={{zIndex: 210}}/>
+                </>
+            )}
         </>
-      )}
-    </>
-  );
+    );
 };
 
 
@@ -77,18 +77,13 @@ const createCanvasObject = (
     const centerY = windowHeight / 2;
 
     // Object 생성
-    const block = new Block(
-        {x: centerX, y: centerY - scale * 16 * 1.5},
+    // 배경
+    const ground = new Ground(
+        centerX,
+        centerY + scale * 16 * 1.5,
         scale,
         context
     );
-
-    const mario = new Mario(
-        {x: centerX, y: centerY + scale * 16 * 1.5},
-        scale,
-        context
-    );
-
     const cloud1 = new Cloud(
         centerX - scale * 16 * 5,
         centerY - scale * 16 * 4,
@@ -101,12 +96,19 @@ const createCanvasObject = (
         scale,
         context
     );
-    const ground = new Ground(
-        centerX,
-        centerY + scale * 16 * 1.5,
+    // 캐릭터
+    const block = new Block(
+        {x: centerX, y: centerY - scale * 16 * 1.5},
         scale,
         context
     );
+
+    const mario = new Mario(
+        {x: centerX, y: centerY + scale * 16 * 1.5},
+        scale,
+        context
+    );
+
     return {block, ground, mario, cloud1, cloud2};
 };
 
@@ -150,4 +152,4 @@ const addEventToMario = (
     }
 };
 
-export default PlayMario;
+export default React.memo(PlayMario);

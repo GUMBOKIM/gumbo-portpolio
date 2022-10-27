@@ -20,8 +20,6 @@ export const ScreenSizeCanvas = styled.canvas`
   height: 100vh;
   padding: 0;
   margin: 0;
-
-  z-index: 900;
 `;
 
 export const TouchArea = styled.div`
