@@ -28,16 +28,17 @@ export interface SquareVertexInfo {
 
 export class CanvasObject {
     draw() {
-    };
+        // draw canvas object
+    }
 }
 
-class CanvasSquare extends CanvasObject {
+export class CanvasSquare extends CanvasObject {
     type: SquareType = 'FIXED';
     location: Location;
     size: Size;
     context: CanvasRenderingContext2D;
 
-    constructor(location: Location, size: Size, context: CanvasRenderingContext2D) {
+    protected constructor(location: Location, size: Size, context: CanvasRenderingContext2D) {
         super();
         this.location = {x: location.x - size.width / 2, y: location.y + size.height / 2};
         this.size = size;
@@ -45,10 +46,8 @@ class CanvasSquare extends CanvasObject {
     }
 
     locate() {
-    };
-
-    effectCollision() {
-    };
+        // locate this object
+    }
 
     // 충돌 확인
     checkCollision(canvasSquares: CanvasSquare[]) {
@@ -65,27 +64,27 @@ class CanvasSquare extends CanvasObject {
             if (this.type === 'MOVEABLE' && otherType === 'FIXED') {
                 if (this.isCollisionTop(canvasSquare)) {
                     this.correctLocation(thisLeftX, canvasBottomY);
-                    this.collideTop();
-                    canvasSquare.collideBottom();
+                    this.effectCollideTop();
+                    canvasSquare.effectCollideBottom();
                     isCollision = true;
                 }
                 if (this.isCollisionBottom(canvasSquare)) {
                     this.correctLocation(thisLeftX, canvasTopY - this.size.height);
-                    this.collideBottom();
-                    canvasSquare.collideTop();
+                    this.effectCollideBottom();
+                    canvasSquare.effectCollideTop();
                     isCollision = true;
                 }
                 // TODO: 왼쪽 오른쪽 충돌 부분 수정 필요 -> 비정상적으로 인식됨
                 if (this.isCollisionRight(canvasSquare)) {
                     this.correctLocation(canvasLeftX - this.size.width, thisTopY);
-                    this.collideRight();
-                    canvasSquare.collideLeft();
+                    this.effectCollideRight();
+                    canvasSquare.effectCollideLeft();
                     isCollision = true;
                 }
                 if (this.isCollisionLeft(canvasSquare)) {
                     this.correctLocation(canvasRightX, thisTopY);
-                    this.collideLeft();
-                    canvasSquare.collideRight();
+                    this.effectCollideLeft();
+                    canvasSquare.effectCollideRight();
                     isCollision = true;
                 }
             } else if (this.type === 'FIXED' && otherType === 'MOVEABLE') {
@@ -148,17 +147,26 @@ class CanvasSquare extends CanvasObject {
         return thisLeftX < canvasRightX && thisRightX > canvasLeftX && thisBottomY > canvasTopY && thisTopY < canvasBottomY;
     }
 
-    collideTop() {
-    };
+    effectCollideTop() {
+        // collide top
+    }
 
-    collideBottom() {
-    };
+    effectCollideBottom() {
+        // collide bottom
+    }
 
-    collideLeft() {
-    };
+    effectCollideLeft() {
+        // collide left
 
-    collideRight() {
-    };
+    }
+
+    effectCollideRight() {
+        // collide right
+    }
+
+    effectCollision() {
+        // collide effect
+    }
 
     getVertexInfo(): SquareVertexInfo {
         const leftX = this.location.x;

@@ -110,22 +110,19 @@ class Mario extends CanvasSquare {
         this.setTic();
     }
 
-    effectCollision() {
-    }
-
-    collideTop() {
+    effectCollideTop() {
         if (this.yStatus === "UP") this.yStatus = "DOWN";
     }
 
-    collideBottom() {
+    effectCollideBottom() {
         if (this.yStatus === "DOWN") this.yStatus = "STOP";
     }
 
-    collideLeft() {
+    effectCollideLeft() {
         if (this.xStatus === "LEFT") this.xStatus = 'STOP';
     }
 
-    collideRight() {
+    effectCollideRight() {
         if (this.xStatus === 'RIGHT') this.xStatus = 'STOP';
     }
 

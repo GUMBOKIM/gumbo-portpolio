@@ -1,18 +1,11 @@
 import React from 'react';
-import LandingPage from "./component/LandingPage/LandingPage";
-import Bgm from "./component/bgm/Bgm";
+import MarioScene from "./component/marioScene/MarioScene";
 
 const App: React.FC = () => {
 
     return (
         <>
-            <Bgm/>
-            <LandingPage/>
-            {/*<PersonInfoSection/>*/}
-            {/*<CareerSection/>*/}
-            {/*<TechStackSection/>*/}
-            {/*<ProjectSection/>*/}
-            {/*<Footer/>*/}
+            <MarioScene/>
         </>
     );
 }

@@ -24,7 +24,7 @@ class Block extends CanvasSquare {
         this.image.src = './mario/image/block.png'
     }
 
-    collideBottom() {
+    effectCollideBottom() {
         audioPlayer.play('coin');
     }
 
