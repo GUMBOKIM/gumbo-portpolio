@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MarioWordContainer = styled.div`
+export const MarioSceneContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -9,6 +9,8 @@ export const MarioWordContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-grow: 1;
+
+  background-color: #5c94fc;
 `;
 
 export const ScreenSizeCanvas = styled.canvas`
@@ -16,10 +18,11 @@ export const ScreenSizeCanvas = styled.canvas`
   top: 0;
   left: 0;
 
+  width: 100vw;
+  height: 100vh;
   padding: 0;
   margin: 0;
 
-  background-color: #5c94fc;
   z-index: 900;
 `;
 
