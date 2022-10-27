@@ -1,17 +1,20 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import * as S from "./MarioScene.style";
-import HideCurtain from "./hideCurtain/HideCurtain";
+import PlayMario from "./PlayCanvas";
+import CurtainCanvas, {CurtainStatus} from "./CurtainCanvas";
 
 const MarioScene: React.FC = () => {
+    const {curtainStatus, openCurtain, closeCurtain} = useCurtainControl();
+
     useEffect(() => {
         imagePreload();
     }, [])
 
     return (
-        <S.MarioSceneContainer>
-            <HideCurtain/>
-            {/*<PlayMario/>*/}
-        </S.MarioSceneContainer>
+        <S.TouchAreaContainer>
+            <CurtainCanvas curtainStatus={curtainStatus} openCurtain={openCurtain}/>
+            <PlayMario closeCurtain={closeCurtain}/>
+        </S.TouchAreaContainer>
     );
 };
 
@@ -29,7 +32,7 @@ const imagePreload = () => {
         preload(imageArray);
     }
     imageSequentialLoad([
-        './mario/image/curtain.png',
+        './mario/image/curtainCanvas.png',
         './mario/image/groundTile.png',
         './mario/image/cloud.png',
         './mario/image/block.png',
@@ -37,5 +40,11 @@ const imagePreload = () => {
     ])
 }
 
+const useCurtainControl = () => {
+    const [curtainStatus, setCurtainStatus] = useState<CurtainStatus>('INIT');
+    const openCurtain = useCallback(() => setCurtainStatus("UP"), []);
+    const closeCurtain = useCallback(() => setCurtainStatus("DOWN"), []);
+    return {curtainStatus, openCurtain, closeCurtain};
+}
 
 export default MarioScene;

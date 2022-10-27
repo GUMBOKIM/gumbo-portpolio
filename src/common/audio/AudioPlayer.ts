@@ -2,24 +2,24 @@ type SoundKind = 'coin' | 'jump' | 'overworld' | 'ending';
 const SoundInfo: {
     [key in SoundKind]: {
         src: string;
-        autoReplay: boolean;
+        bgm: boolean;
     }
 } = {
     'coin': {
         src: 'mario/sound/coin.mp3',
-        autoReplay: false
+        bgm: false
     },
     'jump': {
         src: 'mario/sound/jump.mp3',
-        autoReplay: false
+        bgm: false
     },
     'overworld': {
         src: 'mario/sound/overworld.mp3',
-        autoReplay: true
+        bgm: true
     },
     'ending': {
         src: 'mario/sound/ending.mp3',
-        autoReplay: true
+        bgm: true
     }
 }
 
@@ -28,10 +28,9 @@ class AudioPlayer {
 
     constructor() {
         Object.keys(SoundInfo).forEach((key) => {
-            const {src, autoReplay} = SoundInfo[<"coin" | "jump" | "overworld" | "ending">key];
+            const {src, bgm} = SoundInfo[<"coin" | "jump" | "overworld" | "ending">key];
             const audio = new Audio(src);
-            if (autoReplay) {
-                console.log(key)
+            if (bgm) {
                 audio.addEventListener('ended', () => {
                     audio.currentTime = 0;
                     audio.play();
@@ -45,9 +44,18 @@ class AudioPlayer {
     play(kind: SoundKind) {
         const audio = this.audioRepository.get(kind);
         if (audio) {
-            audio.currentTime = 0;
-            audio.play();
+            if (SoundInfo[kind].bgm && audio.played.length !== 0) {
+                return;
+            } else {
+                audio.currentTime = 0;
+                audio.play();
+            }
         }
+    }
+
+    stop(kind: SoundKind) {
+        const audio = this.audioRepository.get(kind);
+        if (audio) audio.pause();
     }
 }
 

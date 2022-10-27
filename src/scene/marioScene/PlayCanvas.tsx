@@ -1,14 +1,17 @@
-import Block from "../../../canvas/object/Block";
-import Mario from "../../../canvas/object/Mario";
-import Cloud from "../../../canvas/object/Cloud";
-import Ground from "../../../canvas/object/Ground";
+import Block from "../../canvas/object/Block";
+import Mario from "../../canvas/object/Mario";
+import Cloud from "../../canvas/object/Cloud";
+import Ground from "../../canvas/object/Ground";
 import React, {RefObject, useEffect, useRef} from "react";
 import {isMobile} from "react-device-detect";
-import useWindowResize from "../../../common/hook/useWindowResize";
-import * as S from "../MarioScene.style";
+import * as S from "./MarioScene.style";
+import {RetroDiv} from "../../common/component/8BitComponent";
 
-const PlayMario = () => {
-    const windowSize = useWindowResize();
+interface PlayCanvasProps {
+    closeCurtain: () => void
+}
+
+const PlayCanvas = ({closeCurtain}: PlayCanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const leftTouchAreaRef = useRef<HTMLDivElement>(null);
     const centerTouchAreaRef = useRef<HTMLDivElement>(null);
@@ -49,17 +52,18 @@ const PlayMario = () => {
                 drawCanvas();
             }
         }
-    }, [windowSize]);
+    }, []);
 
     return (
         <>
-            <S.ScreenSizeCanvas ref={canvasRef} style={{zIndex: 200}}/>
+            <S.ScreenSizeCanvas ref={canvasRef}/>
+            <RetroDiv>Hi Im Developr Gumbo</RetroDiv>
             {isMobile && (
-                <>
-                    <S.TouchArea ref={leftTouchAreaRef} style={{zIndex: 210}}/>
-                    <S.TouchArea ref={centerTouchAreaRef} style={{zIndex: 210}}/>
-                    <S.TouchArea ref={rightTouchAreaRef} style={{zIndex: 210}}/>
-                </>
+                <S.TouchAreaContainer>
+                    <S.TouchArea ref={leftTouchAreaRef}/>
+                    <S.TouchArea ref={centerTouchAreaRef}/>
+                    <S.TouchArea ref={rightTouchAreaRef}/>
+                </S.TouchAreaContainer>
             )}
         </>
     );
@@ -152,4 +156,4 @@ const addEventToMario = (
     }
 };
 
-export default React.memo(PlayMario);
+export default React.memo(PlayCanvas);
