@@ -28,8 +28,7 @@ class AudioPlayer {
 
     constructor() {
         Object.keys(SoundInfo).forEach((key) => {
-            // @ts-ignore
-            const {src, autoReplay} = SoundInfo[key];
+            const {src, autoReplay} = SoundInfo[<"coin" | "jump" | "overworld" | "ending">key];
             const audio = new Audio(src);
             if (autoReplay) {
                 console.log(key)
@@ -39,13 +38,12 @@ class AudioPlayer {
                 });
             }
             audio.volume = 0.3;
-            // @ts-ignore
-            this.audioRepository.set(key, audio);
+            this.audioRepository.set(<"coin" | "jump" | "overworld" | "ending">key, audio);
         })
     }
 
     play(kind: SoundKind) {
-        let audio = this.audioRepository.get(kind);
+        const audio = this.audioRepository.get(kind);
         if (audio) {
             audio.currentTime = 0;
             audio.play();

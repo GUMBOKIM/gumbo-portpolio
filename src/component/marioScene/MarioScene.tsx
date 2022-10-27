@@ -35,7 +35,7 @@ const TouchArea = styled.div`
   z-index: 1000;
 `
 
-const LandingPage: React.FC = () => {
+const MarioScene: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const leftTouchAreaRef = useRef<HTMLDivElement>(null);
@@ -115,4 +115,4 @@ const LandingPage: React.FC = () => {
     )
 }
 
-export default LandingPage;
+export default MarioScene;
