@@ -9,8 +9,6 @@ export const MarioSceneContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-grow: 1;
-
-  background-color: #5c94fc;
 `;
 
 export const ScreenSizeCanvas = styled.canvas`
