@@ -1,5 +1,5 @@
 import React from 'react';
-import MarioScene from "./component/marioScene/MarioScene";
+import MarioScene from "./scene/marioScene/MarioScene";
 
 const App: React.FC = () => {
 
