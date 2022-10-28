@@ -5,13 +5,10 @@ import Ground from "../../canvas/object/Ground";
 import React, {RefObject, useEffect, useRef} from "react";
 import {isMobile} from "react-device-detect";
 import * as S from "./MarioScene.style";
-import {RetroDiv} from "../../common/component/8BitComponent";
+import {RetroScaleUpBox} from "../../common/components/8BitComponent";
 
-interface PlayCanvasProps {
-    closeCurtain: () => void
-}
 
-const PlayCanvas = ({closeCurtain}: PlayCanvasProps) => {
+const PlayMario = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const leftTouchAreaRef = useRef<HTMLDivElement>(null);
     const centerTouchAreaRef = useRef<HTMLDivElement>(null);
@@ -56,8 +53,8 @@ const PlayCanvas = ({closeCurtain}: PlayCanvasProps) => {
 
     return (
         <>
-            <S.ScreenSizeCanvas ref={canvasRef}/>
-            <RetroDiv>Hi Im Developr Gumbo</RetroDiv>
+            <canvas ref={canvasRef}/>
+            <RetroScaleUpBox/>
             {isMobile && (
                 <S.TouchAreaContainer>
                     <S.TouchArea ref={leftTouchAreaRef}/>
@@ -156,4 +153,4 @@ const addEventToMario = (
     }
 };
 
-export default React.memo(PlayCanvas);
+export default React.memo(PlayMario);

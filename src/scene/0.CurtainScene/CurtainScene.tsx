@@ -1,18 +1,17 @@
-import React, {useEffect, useRef} from "react";
-import * as S from "./MarioScene.style";
+import React, {useEffect, useRef, useState} from "react";
+import * as S from "./CurtainScene.style";
+import {CurtainStatus} from "./CurtainScene.style";
 import Curtain from "../../canvas/object/Curtain";
-import {isMobile} from "react-device-detect";
-import audioPlayer from "../../common/audio/AudioPlayer";
 
-export type CurtainStatus = 'INIT' | 'UP' | 'DOWN';
-
-interface CurtainCanvasProps {
-    curtainStatus: CurtainStatus;
-    openCurtain: () => void;
-}
-
-const CurtainCanvas = ({curtainStatus, openCurtain}: CurtainCanvasProps) => {
+const CurtainScene = () => {
+    const [curtainStatus, setCurtainStatus] = useState<CurtainStatus>('DOWN');
     const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        if (curtainStatus === 'DOWN') {
+            setTimeout(() => setCurtainStatus('UP'), 2000);
+        }
+    }, [curtainStatus])
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -26,12 +25,6 @@ const CurtainCanvas = ({curtainStatus, openCurtain}: CurtainCanvasProps) => {
                 const scale = Math.round(windowHeight / 16 / 12);
                 const curtain = new Curtain(scale, context);
                 curtain.draw();
-                const handleCurtain = () => {
-                    openCurtain();
-                    audioPlayer.play('overworld');
-                }
-                canvas.addEventListener('click', handleCurtain);
-                if (isMobile) canvas.addEventListener('touchend', handleCurtain);
             }
         }
     }, []);
@@ -42,4 +35,4 @@ const CurtainCanvas = ({curtainStatus, openCurtain}: CurtainCanvasProps) => {
 };
 
 
-export default CurtainCanvas;
+export default CurtainScene;

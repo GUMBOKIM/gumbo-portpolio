@@ -1,4 +1,4 @@
-type SoundKind = 'coin' | 'jump' | 'overworld' | 'ending';
+type SoundKind = 'coin' | 'jump' | 'overworld';
 const SoundInfo: {
     [key in SoundKind]: {
         src: string;
@@ -6,29 +6,25 @@ const SoundInfo: {
     }
 } = {
     'coin': {
-        src: 'mario/sound/coin.mp3',
+        src: './scene/2/coin.mp3',
         bgm: false
     },
     'jump': {
-        src: 'mario/sound/jump.mp3',
+        src: './scene/2/jump.mp3',
         bgm: false
     },
     'overworld': {
-        src: 'mario/sound/overworld.mp3',
+        src: './scene/1/overworld.mp3',
         bgm: true
     },
-    'ending': {
-        src: 'mario/sound/ending.mp3',
-        bgm: true
-    }
 }
 
-class AudioPlayer {
+class Player {
     audioRepository = new Map<SoundKind, HTMLAudioElement>();
 
     constructor() {
         Object.keys(SoundInfo).forEach((key) => {
-            const {src, bgm} = SoundInfo[<"coin" | "jump" | "overworld" | "ending">key];
+            const {src, bgm} = SoundInfo[<"coin" | "jump" | "overworld">key];
             const audio = new Audio(src);
             if (bgm) {
                 audio.addEventListener('ended', () => {
@@ -37,7 +33,7 @@ class AudioPlayer {
                 });
             }
             audio.volume = 0.3;
-            this.audioRepository.set(<"coin" | "jump" | "overworld" | "ending">key, audio);
+            this.audioRepository.set(<"coin" | "jump" | "overworld">key, audio);
         })
     }
 
@@ -59,6 +55,6 @@ class AudioPlayer {
     }
 }
 
-const audioPlayer = new AudioPlayer();
+const AudioPlayer = new Player();
 
-export default audioPlayer;
+export default AudioPlayer;

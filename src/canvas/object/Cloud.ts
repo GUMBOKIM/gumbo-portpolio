@@ -14,7 +14,7 @@ class Ground extends CanvasObject {
         this.scale = scale;
         this.context = context;
         this.image = new Image();
-        this.image.src = './mario/image/cloud.png'
+        this.image.src = './scene/2/cloud.png'
     }
 
     draw() {

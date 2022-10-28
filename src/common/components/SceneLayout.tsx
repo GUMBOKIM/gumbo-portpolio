@@ -33,7 +33,7 @@ const PrevButton = styled(RetroButton)`
 
   background-color: red;
 
-  z-index: 20;
+  z-index: 90;
 `
 
 const NextButton = styled(RetroButton)`
@@ -46,7 +46,7 @@ const NextButton = styled(RetroButton)`
 
   background-color: blue;
 
-  z-index: 20;
+  z-index: 90;
 `
 
 interface LayoutProps {

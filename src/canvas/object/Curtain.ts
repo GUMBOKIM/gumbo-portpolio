@@ -15,7 +15,7 @@ class Curtain extends CanvasObject {
     }
 
     draw() {
-        this.image.src = './mario/image/curtain.png'
+        this.image.src = './scene/0/curtain.png'
         this.image.onload = () => {
             const width = this.context.canvas.width;
             let nowX = this.x;

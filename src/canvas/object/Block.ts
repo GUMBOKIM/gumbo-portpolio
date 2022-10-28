@@ -1,5 +1,5 @@
 import CanvasSquare, {Location} from "./CanvasSquare";
-import audioPlayer from "../../common/audio/AudioPlayer";
+import AudioPlayer from "../../optimization/AudioPlayer";
 
 type Status = 'INITIAL' | 'HIT' | 'EMPTY';
 
@@ -21,11 +21,11 @@ class Block extends CanvasSquare {
         this.status = 'INITIAL';
         this.scale = scale;
         this.image = new Image();
-        this.image.src = './mario/image/block.png'
+        this.image.src = './scene/2/block.png'
     }
 
     effectCollideBottom() {
-        audioPlayer.play('coin');
+        AudioPlayer.play('coin');
     }
 
     draw() {
