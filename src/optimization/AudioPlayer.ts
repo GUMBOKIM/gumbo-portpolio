@@ -23,9 +23,32 @@ class Player {
     audioRepository = new Map<SoundKind, HTMLAudioElement>();
 
     constructor() {
-        Object.keys(SoundInfo).forEach((key) => {
-            const {src, bgm} = SoundInfo[<"coin" | "jump" | "overworld">key];
-            const audio = new Audio(src);
+        // Object.keys(SoundInfo).forEach((key) => {
+        //     const {src, bgm} = SoundInfo[<"coin" | "jump" | "overworld">key];
+        //     const audio = new Audio(src);
+        //     if (bgm) {
+        //         audio.addEventListener('ended', () => {
+        //             audio.currentTime = 0;
+        //             audio.play();
+        //         });
+        //     }
+        //     audio.volume = 0.3;
+        //     this.audioRepository.set(<"coin" | "jump" | "overworld">key, audio);
+        // })
+    }
+
+    play(kind: SoundKind) {
+        const audio = this.audioRepository.get(kind);
+        if (audio) {
+            if (!(SoundInfo[kind].bgm && audio.played.length !== 0)) {
+                audio.currentTime = 0;
+                audio.play();
+            }
+        } else {
+            const {src, bgm} = SoundInfo[kind];
+            const audio = new Audio();
+            audio.oncanplay = () => audio.play();
+            audio.src = src;
             if (bgm) {
                 audio.addEventListener('ended', () => {
                     audio.currentTime = 0;
@@ -33,19 +56,7 @@ class Player {
                 });
             }
             audio.volume = 0.3;
-            this.audioRepository.set(<"coin" | "jump" | "overworld">key, audio);
-        })
-    }
-
-    play(kind: SoundKind) {
-        const audio = this.audioRepository.get(kind);
-        if (audio) {
-            if (SoundInfo[kind].bgm && audio.played.length !== 0) {
-                return;
-            } else {
-                audio.currentTime = 0;
-                audio.play();
-            }
+            this.audioRepository.set(kind, audio);
         }
     }
 

@@ -22,22 +22,20 @@ const HelloSceneSrcArr: ResourceInfo[] = [
     {location: './scene/2/mario.png', type: "image"},
 ]
 
-const resourcePreload = (srcArrArr: ResourceInfo[][]) => {
+const preload = (srcArrArr: ResourceInfo[][]) => {
 
     const load = (resource: ResourceInfo) => {
-        console.log('시작', resource.location)
         return new Promise((resolve) => {
             if (resource.type === "image") {
                 const img = new Image();
                 img.onload = () => {
-                    console.log('끝', resource.location)
                     resolve(true)
                 };
                 img.src = resource.location;
             } else if (resource.type === "audio") {
                 const audio = new Audio();
-                audio.onload = () => {
-                    console.log('끝', resource.location)
+                audio.preload = "auto";
+                audio.oncanplaythrough = () => {
                     resolve(true);
                 }
                 audio.src = resource.location;
@@ -58,10 +56,10 @@ const resourcePreload = (srcArrArr: ResourceInfo[][]) => {
     sequential(srcArrArr);
 }
 
-const Preload = () => resourcePreload([
+const Preload = () => preload([
         CurtainSceneSrcArr,
-        HelloSceneSrcArr,
-        StartSceneSrcArr
+        StartSceneSrcArr,
+        HelloSceneSrcArr
     ]
 );
 
