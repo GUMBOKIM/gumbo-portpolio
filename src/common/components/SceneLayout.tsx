@@ -69,33 +69,25 @@ const SceneLayout = (props: LayoutProps) => {
         children
     } = props;
 
-    const handlePrevButton = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.TouchEvent<HTMLButtonElement>) => {
+    const handlePrevButton = (e: React.PointerEvent<HTMLButtonElement>) => {
         if (prevButtonEvent) prevButtonEvent();
         e.currentTarget.disabled = true;
     }
 
-    const handleNextButton = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.TouchEvent<HTMLButtonElement>) => {
+    const handleNextButton = (e: React.PointerEvent<HTMLButtonElement>) => {
         if (nextButtonEvent) nextButtonEvent();
         e.currentTarget.disabled = true;
     }
 
-    if (isMobile) {
-        return (
-            <SceneContainer isFullSize>
-                {children}
-                {isExistPrevButton && <PrevButton onTouchEnd={handlePrevButton}>{'<'}</PrevButton>}
-                {isExistNextButton && <NextButton onTouchEnd={handleNextButton}>{'>'}</NextButton>}
-            </SceneContainer>
-        )
-    }
 
     return (
-        <SceneContainer isFullSize={isSceneFullSize}>
+        <SceneContainer isFullSize={isMobile || isSceneFullSize}>
             {children}
-            {isExistPrevButton && <PrevButton onClick={handlePrevButton}>{'<'}</PrevButton>}
-            {isExistNextButton && <NextButton onClick={handleNextButton}>{'>'}</NextButton>}
+            {isExistPrevButton && <PrevButton onPointerUp={handlePrevButton}>{'<'}</PrevButton>}
+            {isExistNextButton && <NextButton onPointerUp={handleNextButton}>{'>'}</NextButton>}
         </SceneContainer>
     )
+
 }
 
 export default SceneLayout;
