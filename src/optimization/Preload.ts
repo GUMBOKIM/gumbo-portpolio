@@ -27,21 +27,26 @@ const preload = (srcArrArr: ResourceInfo[][]) => {
     const load = (resource: ResourceInfo) => {
         return new Promise((resolve) => {
             if (resource.type === "image") {
-                const img = new Image();
-                img.onload = () => {
-                    resolve(true)
-                };
-                img.src = resource.location;
+                loadImage(resource, resolve);
             } else if (resource.type === "audio") {
-                const audio = new Audio();
-                audio.preload = "auto";
-                audio.oncanplaythrough = () => {
-                    resolve(true);
-                }
-                audio.src = resource.location;
-
+                loadAudio(resource, resolve);
             }
         })
+    }
+
+    const loadImage = (resource: ResourceInfo, resolve: (value: unknown) => void) => {
+        const img = new Image();
+        img.onload = () => {
+            resolve(true)
+        };
+        img.src = resource.location;
+    }
+
+    const loadAudio = (resource: ResourceInfo, resolve: (value: unknown) => void) => {
+        const audio = new Audio(resource.location);
+        audio.oncanplaythrough = (ev) => {
+            resolve(true);
+        }
     }
 
     const parallel = (srcArr: ResourceInfo[]) => {
@@ -53,13 +58,13 @@ const preload = (srcArrArr: ResourceInfo[][]) => {
             await parallel(srcArr);
         }
     }
+
     sequential(srcArrArr);
 }
 
 const Preload = () => preload([
         CurtainSceneSrcArr,
-        StartSceneSrcArr,
-        HelloSceneSrcArr
+        [...StartSceneSrcArr, ...HelloSceneSrcArr]
     ]
 );
 
