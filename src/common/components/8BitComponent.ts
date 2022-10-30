@@ -1,10 +1,27 @@
 import styled, {css} from "styled-components";
 
-export const RetroDiv = styled.div<{ backgroundColor?: string; borderColor?: string; }>`
+export const Retro0StepBox = styled.div<{ backgroundColor?: string; borderColor?: string; }>`
+  box-sizing: border-box;
+  padding: 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+
+  ${props => {
+    const backgroundColor = props.backgroundColor ?? 'white';
+    const borderColor = props.borderColor ?? 'black';
+    return css`
+      background-color: ${backgroundColor};
+      border: 0.25rem ${borderColor} solid;
+    `
+  }};
+`;
+
+export const Retro2StepBox = styled.div<{ backgroundColor?: string; borderColor?: string; }>`
   box-sizing: border-box;
   margin: 0.5rem;
   padding: 0.2rem;
   text-align: center;
+  white-space: nowrap;
 
   ${props => {
     const backgroundColor = props.backgroundColor ?? 'white';
@@ -56,7 +73,7 @@ export const RetroButton = styled.button`
   }
 `
 
-export const RetroScaleUpBox = styled(RetroDiv)`
+export const RetroScaleUpBox = styled(Retro2StepBox)`
   position: fixed;
   top: 50%;
   left: 50%;

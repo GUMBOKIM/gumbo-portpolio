@@ -4,8 +4,7 @@ import Cloud from "../../canvas/object/Cloud";
 import Ground from "../../canvas/object/Ground";
 import React, {RefObject, useEffect, useRef} from "react";
 import {isMobile} from "react-device-detect";
-import * as S from "./MarioScene.style";
-import {RetroScaleUpBox} from "../../common/components/8BitComponent";
+import * as S from "./HelloScene.style";
 
 
 const PlayMario = () => {
@@ -15,6 +14,7 @@ const PlayMario = () => {
     const rightTouchAreaRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        let timer: NodeJS.Timer;
         const canvas = canvasRef.current;
         if (canvas) {
             const windowWidth = window.innerWidth;
@@ -44,17 +44,18 @@ const PlayMario = () => {
                     mario.checkCollision([block]);
                     // Object 그리기
                     [ground, cloud1, cloud2, mario, block].forEach((o) => o.draw());
-                    requestAnimationFrame(drawCanvas);
                 };
-                drawCanvas();
+                timer = setInterval(drawCanvas, 1000 / 60);
+            }
+            return () => {
+                clearInterval(timer);
             }
         }
     }, []);
 
     return (
         <>
-            <canvas ref={canvasRef}/>
-            <RetroScaleUpBox/>
+            <S.MarioCanvas ref={canvasRef}/>
             {isMobile && (
                 <S.TouchAreaContainer>
                     <S.TouchArea ref={leftTouchAreaRef}/>
@@ -81,7 +82,7 @@ const createCanvasObject = (
     // 배경
     const ground = new Ground(
         centerX,
-        centerY + scale * 16 * 1.5,
+        centerY + scale * 16 * 2.5,
         scale,
         context
     );
@@ -99,13 +100,13 @@ const createCanvasObject = (
     );
     // 캐릭터
     const block = new Block(
-        {x: centerX, y: centerY - scale * 16 * 1.5},
+        {x: centerX, y: centerY - scale * 16 * 0.5},
         scale,
         context
     );
 
     const mario = new Mario(
-        {x: centerX, y: centerY + scale * 16 * 1.5},
+        {x: centerX, y: centerY + scale * 16 * 2.5},
         scale,
         context
     );
@@ -119,12 +120,6 @@ const addEventToMario = (
     centerTouchAreaRef: RefObject<HTMLDivElement>,
     rightTouchAreaRef: RefObject<HTMLDivElement>
 ) => {
-    const marioKeyDown = (e: KeyboardEvent) =>
-        mario.startInteraction(mario.detectKeyInput(e.code));
-    const marioKeyUp = (e: KeyboardEvent) =>
-        mario.endInteraction(mario.detectKeyInput(e.code));
-    window.addEventListener("keydown", marioKeyDown);
-    window.addEventListener("keyup", marioKeyUp);
 
     if (isMobile) {
         const leftTouchArea = leftTouchAreaRef.current;
@@ -150,6 +145,17 @@ const addEventToMario = (
                 mario.endInteraction("JUMP")
             );
         }
+    }
+
+    const marioKeyDown = (e: KeyboardEvent) =>
+        mario.startInteraction(mario.detectKeyInput(e.code));
+    const marioKeyUp = (e: KeyboardEvent) =>
+        mario.endInteraction(mario.detectKeyInput(e.code));
+    window.addEventListener("keydown", marioKeyDown);
+    window.addEventListener("keyup", marioKeyUp);
+    return () => {
+        window.removeEventListener("keydown", marioKeyDown);
+        window.removeEventListener("keyup", marioKeyUp);
     }
 };
 

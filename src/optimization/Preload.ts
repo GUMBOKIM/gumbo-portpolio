@@ -44,7 +44,7 @@ const preload = (srcArrArr: ResourceInfo[][]) => {
 
     const loadAudio = (resource: ResourceInfo, resolve: (value: unknown) => void) => {
         const audio = new Audio(resource.location);
-        audio.oncanplaythrough = (ev) => {
+        audio.oncanplaythrough = () => {
             resolve(true);
         }
     }

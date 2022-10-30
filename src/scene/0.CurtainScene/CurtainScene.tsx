@@ -8,10 +8,8 @@ const CurtainScene = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
-        if (curtainStatus === 'DOWN') {
-            setTimeout(() => setCurtainStatus('UP'), 2000);
-        }
-    }, [curtainStatus])
+        setTimeout(() => setCurtainStatus(curtainStatus === 'DOWN' ? 'UP' : 'DOWN'), 2000);
+    }, [curtainStatus]);
 
     useEffect(() => {
         const canvas = canvasRef.current;

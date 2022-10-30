@@ -1,22 +1,22 @@
 import styled, {css} from "styled-components";
 import {RetroButton} from "../8BitComponent";
 
-export const SceneContainer = styled.div<{ isFullSize: boolean }>`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+export const SceneContainer = styled.section<{ isFullSize: boolean }>`
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  height: 100vh;
-  width: 100vw;
   ${p => {
-    if (!p.isFullSize) return css`max-width: 800px`
+    if (!p.isFullSize) return css`max-width: 1080px`
   }};
-  overflow: hidden;
 
   z-index: 10;
 `;

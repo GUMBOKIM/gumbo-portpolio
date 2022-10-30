@@ -1,14 +1,27 @@
-* {
-    font-family: 'PressStart2P', 'DungGeunMo';
-    font-size: 3vh;
-    image-rendering: pixelated;
-}
-
 body {
     width: 100vw;
     height: 100vh;
     margin: 0;
+    padding: 0;
     background-color: #5c94fc;
+    font-family: 'PressStart2P';
+    font-size: 3vh;
+}
+
+#root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    image-rendering: pixelated;
 }
 
 .loading {
@@ -74,7 +87,6 @@ body {
     font-family: 'DungGeunMo';
     font-display: block;
     src: url('font/DungGeunMo.woff');
-    unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
 }
 
 @font-face {

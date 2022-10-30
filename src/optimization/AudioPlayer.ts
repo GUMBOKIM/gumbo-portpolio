@@ -23,6 +23,7 @@ class Player {
     audioRepository = new Map<SoundKind, HTMLAudioElement>();
 
     constructor() {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         Object.keys(SoundInfo).forEach((kind) => this.save(kind));
     }
@@ -30,6 +31,7 @@ class Player {
     play(kind: SoundKind) {
         let audio: HTMLAudioElement;
         if (this.audioRepository.has(kind)) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             audio = this.audioRepository.get(kind);
         } else {
