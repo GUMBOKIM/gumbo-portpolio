@@ -1,8 +1,8 @@
-import React, {ReactNode, useEffect, useRef} from "react";
+import React, {ReactNode, RefObject, useEffect, useRef} from "react";
 import SceneLayout from "../../common/components/sceneLayout/SceneLayout";
 import * as S from "./InfoScene.style";
-import debounce from "lodash/debounce";
 import InfoSection from "./info/InfoSection";
+import {isDesktop} from "react-device-detect";
 
 const SceneInfo: ReactNode[] = [
     <InfoSection sectionName="1">
@@ -28,19 +28,21 @@ const SceneInfo: ReactNode[] = [
     </InfoSection>,
 ];
 
+
 const InfoScene = () => {
+
+    const marioRef = useRef<HTMLDivElement>(null);
     const sectionContainerRef = useRef<HTMLDivElement>(null);
+    useNavMarioMove(marioRef, sectionContainerRef);
+    useSwipeWindow(sectionContainerRef);
 
     return (
         <SceneLayout isSceneFullSize={false}>
             <S.InfoContainer>
                 <S.MarioNavContainer>
-                    ASDASDASD
+                    <S.SwimMario ref={marioRef}/>
                 </S.MarioNavContainer>
-                <S.InfoSectionContainer ref={sectionContainerRef}
-                                        onScroll={e => {
-                                            debounce(() => console.log(Math.floor(e.currentTarget.scrollLeft / e.currentTarget.scrollWidth * 7)), 100);
-                                        }}>
+                <S.InfoSectionContainer ref={sectionContainerRef}>
                     {SceneInfo}
                 </S.InfoSectionContainer>
             </S.InfoContainer>
@@ -48,45 +50,60 @@ const InfoScene = () => {
     )
 };
 
-const useInteractiveEvent = (moveNext: () => void, movePrev: () => void) => {
+const useNavMarioMove = (marioRef: RefObject<HTMLDivElement>, sectionContainerRef: RefObject<HTMLDivElement>) => {
     useEffect(() => {
-        let location = {x: 0, y: 0};
-        const pointerDownEvent = (e: PointerEvent) => {
-            location = {x: e.clientX, y: e.clientY};
+        const mario = marioRef.current;
+        const sectionContainer = sectionContainerRef.current;
+        if (sectionContainer && mario) {
+            let beforeScrollLeft = 0;
+            const marioSize = mario.clientWidth;
+            const scrollEvent = (e: Event) => {
+                const {scrollLeft, scrollWidth, clientWidth} = e.target as HTMLDivElement;
+                // 마리오 이동
+                const locationPercent = Math.floor((scrollLeft / (scrollWidth - clientWidth)) * 100) / 100;
+                mario.style.left = `${(clientWidth - marioSize) * locationPercent}px`
+                // 마리오 방향
+                // 오른쪽
+                if (beforeScrollLeft - scrollLeft < 0) {
+                    mario.classList.remove('left');
+                    mario.classList.add('right');
+                    // 왼쪽
+                } else {
+                    mario.classList.remove('right');
+                    mario.classList.add('left');
+                }
+                beforeScrollLeft = scrollLeft;
+
+            };
+            sectionContainer.addEventListener('scroll', scrollEvent);
+            return () => sectionContainer.removeEventListener('scroll', scrollEvent);
         }
+    }, [])
+}
 
-        const pointerUpEvent = (e: PointerEvent) => {
-            const {x: beforeX, y: beforeY} = location;
-            const {screenX: nowX, screenY: nowY} = e;
+const useSwipeWindow = (sectionContainerRef: RefObject<HTMLDivElement>) => {
+    useEffect(() => {
+        if (isDesktop) {
+            const sectionContainer = sectionContainerRef.current;
+            if (sectionContainer) {
+                let downX = 0;
+                const pointerDownEvent = (e: PointerEvent) => {
+                    downX = e.screenX;
+                }
+                const pointerUpEvent = (e: PointerEvent) => {
+                    const upX = e.screenX;
+                    sectionContainer.scrollBy({left: downX - upX, behavior: "smooth"});
+                }
+                window.addEventListener('pointerdown', pointerDownEvent);
+                window.addEventListener('pointerup', pointerUpEvent);
+                return () => {
+                    window.removeEventListener('pointerdown', pointerDownEvent);
+                    window.removeEventListener('pointerup', pointerUpEvent);
+                }
 
-            const diffX = beforeX - nowX;
-            const diffY = beforeY - nowY;
-
-
-            if (Math.abs(diffX) > Math.abs(diffY)) {
-                // 수평 이동
-                diffX > 0 ? moveNext() : movePrev();
-            } else {
-                // 수직 이동
-                diffY > 0 ? moveNext() : movePrev();
             }
         }
-
-        const wheelEvent = debounce((e: WheelEvent) => {
-            e.deltaY > 0 ? moveNext() : movePrev();
-        }, 100);
-
-        window.addEventListener('pointerdown', pointerDownEvent);
-        window.addEventListener('pointerup', pointerUpEvent);
-        window.addEventListener('wheel', wheelEvent);
-
-        return () => {
-            window.removeEventListener('pointerdown', pointerDownEvent);
-            window.removeEventListener('pointerup', pointerUpEvent);
-            window.removeEventListener('wheel', wheelEvent);
-        }
-
-    }, [])
+    })
 }
 
 

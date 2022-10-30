@@ -38,12 +38,6 @@ export const RetroButton = styled.button`
   -moz-appearance: none;
   appearance: none;
 
-  -ms-user-select: none;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-
   margin: 0.25rem;
   padding: 0.1rem 0.1rem 0.35rem 0.35rem;
   box-sizing: content-box;
