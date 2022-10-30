@@ -6,6 +6,11 @@ body {
     background-color: #5c94fc;
     font-family: 'PressStart2P';
     font-size: 3vh;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #root {
