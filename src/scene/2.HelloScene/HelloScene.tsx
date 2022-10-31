@@ -28,4 +28,4 @@ const HelloScene = ({moveNextScene}: HelloSceneProps) => {
     );
 };
 
-export default HelloScene;
+export default React.memo(HelloScene);

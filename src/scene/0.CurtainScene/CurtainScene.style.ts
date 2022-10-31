@@ -24,6 +24,8 @@ export const CurtainCanvas = styled.canvas<{ isCurtainExist: boolean }>`
   height: 100%;
   padding: 0;
   margin: 0;
-  ${p => p.isCurtainExist ? css`animation: ${CurtainAnimation} 3s linear forwards;` : css`display: none;`};
+
+  background-color: black;
+  ${p => p.isCurtainExist ? css`animation: ${CurtainAnimation} 3s linear forwards;` : css`visibility: hidden;`};
   z-index: 100;
 `

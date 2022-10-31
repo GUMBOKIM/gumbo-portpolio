@@ -21,4 +21,4 @@ const StartScene = ({moveNextScene}: StartSceneProps) => {
     )
 }
 
-export default StartScene;
+export default React.memo(StartScene);

@@ -152,4 +152,4 @@ const useNavMenuMotion = (scrollRef: RefObject<HTMLDivElement>, navRef: RefObjec
 }
 
 
-export default InfoScene;
+export default React.memo(InfoScene);
