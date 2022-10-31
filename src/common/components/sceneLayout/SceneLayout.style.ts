@@ -15,7 +15,7 @@ export const SceneContainer = styled.section<{ isFullSize: boolean }>`
   align-items: center;
 
   ${p => {
-    if (!p.isFullSize) return css`max-width: 1080px`
+    if (!p.isFullSize) return css`max-width: 800px`
   }};
 
   z-index: 10;

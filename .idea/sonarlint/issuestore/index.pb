@@ -4,8 +4,6 @@
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-D
-public/manifest.json,4\2\42e89cd2213b9d5dfae4f63522702c623170d792
 F
 public/assets/gear.svg,5\1\51c6faee267c4a1c6b84fb317d072406f6fb015d
 ^
