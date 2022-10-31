@@ -45,16 +45,12 @@ export const RetroButton = styled.button`
   box-shadow: 0.25rem 0 black, -0.25rem 0 black, 0 -0.25rem black, 0 0.25rem black;
   cursor: pointer;
 
-  font-family: 'PressStart2P';
-
-
   :enabled, :disabled {
     border-top: none;
     border-left: none;
 
     border-right: 0.25rem solid rgba(0, 0, 0, 0.25);
     border-bottom: 0.25rem solid rgba(0, 0, 0, 0.25);
-    font-family: 'PressStart2P';
   }
 
   :enabled:active {
@@ -63,13 +59,11 @@ export const RetroButton = styled.button`
 
     border-bottom-style: none;
     border-right-style: none;
-    font-family: 'PressStart2P';
   }
 
   :disabled {
     color: dimgrey;
     background-color: lightgrey;
-    font-family: 'PressStart2P';
   }
 `
 

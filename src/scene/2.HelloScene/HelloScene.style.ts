@@ -19,7 +19,6 @@ const upDownMotion = keyframes`
 export const GreetingBox = styled(Retro2StepBox)`
   position: absolute;
   top: 10%;
-  font-size: 2rem;
 
   animation: ${upDownMotion} 2s infinite linear;;
 
@@ -29,7 +28,6 @@ export const GreetingBox = styled(Retro2StepBox)`
 export const DescriptionBox = styled.div`
   position: absolute;
   top: 25%;
-  font-size: 1.5rem;
 
   animation: ${upDownMotion} 2s infinite linear;;
 
@@ -55,7 +53,6 @@ export const ExplainBox = styled.div`
   top: 42%;
 
   text-align: center;
-  font-size: 1.5rem;
   color: gold;
 
   opacity: 0.8;

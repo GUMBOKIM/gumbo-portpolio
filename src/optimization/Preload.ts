@@ -6,7 +6,7 @@ interface ResourceInfo {
 }
 
 const CurtainSceneSrcArr: ResourceInfo[] = [
-    {location: './scene/0/curtain.png', type: 'image'}
+    {location: './scene/0/curtain2.png', type: 'image'}
 ]
 
 const StartSceneSrcArr: ResourceInfo[] = [
@@ -20,6 +20,12 @@ const HelloSceneSrcArr: ResourceInfo[] = [
     {location: './scene/2/cloud.png', type: "image"},
     {location: './scene/2/block.png', type: "image"},
     {location: './scene/2/mario.png', type: "image"},
+]
+
+const InfoSceneSrcArr: ResourceInfo[] = [
+    {location: './scene/3/bubble.png', type: "image"},
+    {location: './scene/3/mushroom.png', type: "image"},
+    {location: './scene/3/bubble.png', type: "image"},
 ]
 
 const preload = (srcArrArr: ResourceInfo[][]) => {
@@ -64,7 +70,8 @@ const preload = (srcArrArr: ResourceInfo[][]) => {
 
 const Preload = () => preload([
         CurtainSceneSrcArr,
-        [...StartSceneSrcArr, ...HelloSceneSrcArr]
+        [...StartSceneSrcArr, ...HelloSceneSrcArr],
+        InfoSceneSrcArr
     ]
 );
 

@@ -1,6 +1,13 @@
-body {
+html, body {
+    position: fixed;
+    overflow: hidden;
+    touch-action: none;
+
     width: 100vw;
     height: 100vh;
+    height: -webkit-fill-available;
+    height: fill-available;
+
     margin: 0;
     padding: 0;
     background-color: #5c94fc;
@@ -10,7 +17,13 @@ body {
     -ms-user-select: none;
     user-select: none;
 
-    font-family: 'DungGeunMo', 'PressStart2P';
+
+    font-family: 'DungGeunMo' !important;
+    font-size: 2vh;
+}
+
+button {
+    font-family: 'DungGeunMo' !important;
 }
 
 #root {
@@ -39,11 +52,6 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    font-size: 2vh;
-
-    font-family: 'PressStart2P';
-
 }
 
 .loading-section {
@@ -94,12 +102,5 @@ img {
 @font-face {
     font-family: 'DungGeunMo';
     font-display: block;
-    src: url('font/DungGeunMo.otf');
-    unicode-range: U+AC00-D7A3, U+0041-005A, U+0061-007A, U+0030-0039, U+0020-002F, U+003A-0040, U+005B-0060, U+007B-007E;
-}
-
-@font-face {
-    font-family: 'PressStart2P';
-    font-display: block;
-    src: url('font/PressStart2P-vaV7.woff');
+    src: url('font/DungGeunMo-subset.woff') format('woff');
 }

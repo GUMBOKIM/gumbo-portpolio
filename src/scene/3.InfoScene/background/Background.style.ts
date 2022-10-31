@@ -39,12 +39,12 @@ export const Seaweed = styled.div<{ direction: 'LEFT' | 'RIGHT' }>`
   ${p => {
     if (p.direction === 'LEFT') {
         return css`
-        left: 10%;
-        top: 40%;
-      `
+          left: 10vw;
+          top: 40%;
+        `
     } else {
         return css`
-        right: 15%;
+        right: 10vw;
         top: 30%;
       `
     }

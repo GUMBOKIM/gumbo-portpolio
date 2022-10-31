@@ -34,7 +34,6 @@ const App: React.FC = () => {
             nowScene = null;
     }
 
-
     return (
         <>
             {nowScene}

@@ -6,7 +6,7 @@ export const SceneContainer = styled.section<{ isFullSize: boolean }>`
 
   height: 100%;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
   box-sizing: border-box;
 
   display: flex;
@@ -17,7 +17,6 @@ export const SceneContainer = styled.section<{ isFullSize: boolean }>`
   ${p => {
     if (!p.isFullSize) return css`max-width: 800px`
   }};
-
   z-index: 10;
 `;
 

@@ -4,7 +4,7 @@ export const MenuContainer = styled.div`
   position: relative;
   width: 100%;
   height: 4rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 `
 
 export const MenuItemWrapper = styled.div`
@@ -31,7 +31,7 @@ export const Mushroom = styled.div<{ order: number }>`
 `
 
 export const MenuItemName = styled.div`
-  font-size: 1rem;
+  font-size: 0.5rem;
 `
 
 export const MenuItem = styled.div`
