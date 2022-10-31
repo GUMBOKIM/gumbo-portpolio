@@ -18,12 +18,24 @@ const upDownMotion = keyframes`
 
 export const GreetingBox = styled(Retro2StepBox)`
   position: absolute;
-  top: 15%;
+  top: 10%;
+  font-size: 2rem;
 
-  font-size: min(1rem, 5vw);
+  animation: ${upDownMotion} 2s infinite linear;;
 
-  animation: ${upDownMotion} 2s infinite linear;
+  z-index: 10;
 `;
+
+export const DescriptionBox = styled.div`
+  position: absolute;
+  top: 25%;
+  font-size: 1.5rem;
+
+  animation: ${upDownMotion} 2s infinite linear;;
+
+  z-index: 10;
+
+`
 
 
 const flickerFont = keyframes`
@@ -38,15 +50,15 @@ const flickerFont = keyframes`
   }
 `
 
-
 export const ExplainBox = styled.div`
   position: absolute;
-  top: 40%;
+  top: 42%;
 
   text-align: center;
-  font-size: min(0.8rem, 4vw);
+  font-size: 1.5rem;
   color: gold;
 
+  opacity: 0.8;
   animation: ${flickerFont} 2s infinite linear;
 `;
 

@@ -1,10 +1,11 @@
 import React, {RefObject, useEffect, useRef} from "react";
-import SceneLayout from "../../common/components/sceneLayout/SceneLayout";
-import * as S from "./InfoScene.style";
 import {isDesktop} from "react-device-detect";
-import SceneInfos from "./InfoScene.data";
 import debounce from "lodash/debounce";
+import Background from "./background/Background";
 import InfoMenu from "./menu/InfoMenu";
+import SceneLayout from "../../common/components/sceneLayout/SceneLayout";
+import * as S from "./InfoScene.style"
+import SceneInfo from "./InfoScene.data";
 
 const InfoScene = () => {
     const navRef = useRef<HTMLDivElement>(null);
@@ -16,14 +17,17 @@ const InfoScene = () => {
     useNavMenuMotion(scrollRef, navRef);
 
     return (
-        <SceneLayout isSceneFullSize={false}>
-            <S.InfoContainer>
-                <InfoMenu marioRef={marioRef} navRef={navRef}/>
-                <S.InfoSectionContainer ref={scrollRef}>
-                    {SceneInfos.map(sceneInfo => sceneInfo.section)}
-                </S.InfoSectionContainer>
-            </S.InfoContainer>
-        </SceneLayout>
+        <>
+            <SceneLayout isSceneFullSize={false}>
+                <S.InfoContainer>
+                    <InfoMenu marioRef={marioRef} navRef={navRef}/>
+                    <S.InfoSectionContainer ref={scrollRef}>
+                        {SceneInfo.map(sceneInfo => sceneInfo.section)}
+                    </S.InfoSectionContainer>
+                </S.InfoContainer>
+            </SceneLayout>
+            <Background/>
+        </>
     )
 };
 

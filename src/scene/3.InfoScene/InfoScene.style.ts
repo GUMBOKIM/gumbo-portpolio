@@ -8,7 +8,7 @@ export const InfoContainer = styled.div`
 
 export const InfoSectionContainer = styled.div`
   width: 100%;
-  height: calc(100% - 4.5rem);
+  height: calc(100% - 9rem);
 
   display: flex;
   flex-shrink: 0;

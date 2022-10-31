@@ -7,7 +7,7 @@ export const StartButton = styled(RetroButton)`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 0.8rem;
+  font-size: 2rem;
   width: 6em;
   height: 2em;
 
