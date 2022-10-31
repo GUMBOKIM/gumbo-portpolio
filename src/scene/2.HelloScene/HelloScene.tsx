@@ -3,8 +3,11 @@ import SceneLayout from "../../common/components/sceneLayout/SceneLayout";
 import * as S from "./HelloScene.style"
 import PlayMario from "./PlayMario";
 
+interface HelloSceneProps {
+    moveNextScene: () => void;
+}
 
-const HelloScene: React.FC = () => {
+const HelloScene = ({moveNextScene}: HelloSceneProps) => {
     return (
         <SceneLayout isSceneFullSize>
             <S.GreetingBox>
@@ -18,7 +21,7 @@ const HelloScene: React.FC = () => {
                 <br/>
                 go to next screen
             </S.ExplainBox>
-            <PlayMario/>
+            <PlayMario moveNextScene={moveNextScene}/>
         </SceneLayout>
     );
 };

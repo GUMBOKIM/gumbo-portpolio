@@ -11,7 +11,7 @@ export const InfoSection = styled(Retro0StepBox)`
   flex: 0 0 auto;
   scroll-snap-align: start;
 
-  font-family: "DungGeunMo";
+  font-family: 'DungGeunMo', 'PressStart2P';
 `;
 
 export const ScrollWrapper = styled.div`

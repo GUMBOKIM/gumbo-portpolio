@@ -6,8 +6,11 @@ import React, {RefObject, useEffect, useRef} from "react";
 import {isMobile} from "react-device-detect";
 import * as S from "./HelloScene.style";
 
+interface PlayMarioProps {
+    moveNextScene: () => void;
+}
 
-const PlayMario = () => {
+const PlayMario = ({moveNextScene}: PlayMarioProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const leftTouchAreaRef = useRef<HTMLDivElement>(null);
     const centerTouchAreaRef = useRef<HTMLDivElement>(null);
@@ -26,7 +29,8 @@ const PlayMario = () => {
                 const {block, ground, mario, cloud1, cloud2} = createCanvasObject(
                     windowHeight,
                     windowWidth,
-                    context
+                    context,
+                    moveNextScene,
                 );
 
                 // 마리오 이벤트 등록
@@ -71,7 +75,8 @@ const PlayMario = () => {
 const createCanvasObject = (
     windowHeight: number,
     windowWidth: number,
-    context: CanvasRenderingContext2D
+    context: CanvasRenderingContext2D,
+    colludeEvent: () => void,
 ) => {
     // Object 크기 및 위치 지정
     const scale = Math.round(windowHeight / 16 / 12);
@@ -98,11 +103,12 @@ const createCanvasObject = (
         scale,
         context
     );
-    // 캐릭터
+    // 오브젝트
     const block = new Block(
         {x: centerX, y: centerY - scale * 16 * 0.5},
         scale,
-        context
+        context,
+        colludeEvent
     );
 
     const mario = new Mario(

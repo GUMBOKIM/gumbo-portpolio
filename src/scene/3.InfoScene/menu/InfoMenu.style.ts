@@ -5,8 +5,6 @@ export const MenuContainer = styled.div`
   width: 100%;
   height: 4rem;
   margin-bottom: 0.5rem;
-
-  font-family: "DungGeunMo";
 `
 
 export const MenuItemWrapper = styled.div`

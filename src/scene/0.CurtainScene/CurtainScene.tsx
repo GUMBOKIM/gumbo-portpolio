@@ -1,15 +1,13 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import * as S from "./CurtainScene.style";
-import {CurtainStatus} from "./CurtainScene.style";
 import Curtain from "../../canvas/object/Curtain";
 
-const CurtainScene = () => {
-    const [curtainStatus, setCurtainStatus] = useState<CurtainStatus>('DOWN');
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+interface CurtainSceneProps {
+    isExistCurtain: boolean
+}
 
-    useEffect(() => {
-        setTimeout(() => setCurtainStatus(curtainStatus === 'DOWN' ? 'UP' : 'DOWN'), 2000);
-    }, [curtainStatus]);
+const CurtainScene = ({isExistCurtain}: CurtainSceneProps) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -28,7 +26,7 @@ const CurtainScene = () => {
     }, []);
 
     return (
-        <S.CurtainCanvas ref={canvasRef} curtainStatus={curtainStatus}/>
+        <S.CurtainCanvas isCurtainExist={isExistCurtain} ref={canvasRef}/>
     );
 };
 

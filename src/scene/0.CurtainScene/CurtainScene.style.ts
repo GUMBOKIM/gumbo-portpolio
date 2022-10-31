@@ -1,8 +1,21 @@
 import styled, {css, keyframes} from "styled-components";
 
-export type CurtainStatus = 'UP' | 'DOWN';
+const CurtainAnimation = keyframes`
+  0% {
+    transform: translate3D(0, -100vh, 0);
+  }
+  33% {
+    transform: translate3D(0, 0, 0);
+  }
+  66% {
+    transform: translate3D(0, 0, 0);
+  }
+  100% {
+    transform: translate3D(0, -100vh, 0);
+  }
+`;
 
-export const CurtainCanvas = styled.canvas<{ curtainStatus: CurtainStatus }>`
+export const CurtainCanvas = styled.canvas<{ isCurtainExist: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -11,35 +24,6 @@ export const CurtainCanvas = styled.canvas<{ curtainStatus: CurtainStatus }>`
   height: 100%;
   padding: 0;
   margin: 0;
-
-  ${p => {
-    switch (p.curtainStatus) {
-      case 'UP':
-        return css`animation: ${CurtainUp} 1s linear forwards`;
-      case 'DOWN' :
-        return css`animation: ${CurtainDown} 1s linear forwards`;
-      default:
-        return;
-    }
-  }}
-
+  ${p => p.isCurtainExist ? css`animation: ${CurtainAnimation} 3s linear forwards;` : css`display: none;`};
   z-index: 100;
 `
-
-const CurtainUp = keyframes`
-  0% {
-    transform: translate3D(0, 0, 0);
-  }
-  100% {
-    transform: translate3D(0, -100%, 0);
-  }
-`;
-
-const CurtainDown = keyframes`
-  0% {
-    transform: translate3D(0, -100%, 0);
-  }
-  100% {
-    transform: translate3D(0, 0, 0);
-  }
-`;

@@ -16,16 +16,24 @@ class Block extends CanvasSquare {
     image: HTMLImageElement;
     timer = 0;
 
-    constructor(location: Location, scale: number, context: CanvasRenderingContext2D) {
+    isCollide = false;
+    collideEvent;
+
+    constructor(location: Location, scale: number, context: CanvasRenderingContext2D, collideEvent: () => void) {
         super(location, {width: 16 * scale, height: 16 * scale}, context);
         this.status = 'INITIAL';
         this.scale = scale;
         this.image = new Image();
         this.image.src = './scene/2/block.png'
+        this.collideEvent = collideEvent;
     }
 
     effectCollideBottom() {
         AudioPlayer.play('coin');
+        if (!this.isCollide) {
+            this.collideEvent();
+            this.isCollide = true;
+        }
     }
 
     draw() {

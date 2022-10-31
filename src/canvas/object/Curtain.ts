@@ -15,12 +15,13 @@ class Curtain extends CanvasObject {
     }
 
     draw() {
-        this.image.src = './scene/0/curtain.png'
+        this.image.src = './scene/0/curtain2.png'
         this.image.onload = () => {
+            const height = this.context.canvas.height;
             const width = this.context.canvas.width;
             let nowX = this.x;
             while (nowX <= width) {
-                this.context.drawImage(this.image, 0, 0, 16, 192, nowX, 0, 16 * this.scale, 192 * this.scale);
+                this.context.drawImage(this.image, 0, 0, 16, 305, nowX, height - 305 * this.scale, 16 * this.scale, 305 * this.scale);
                 nowX += 16 * this.scale;
             }
         };
