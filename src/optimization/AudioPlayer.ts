@@ -39,8 +39,8 @@ class Player {
         }
         if (!(SoundInfo[kind].bgm && audio.played.length !== 0)) {
             audio.currentTime = 0;
-            audio.play();
         }
+        audio.play();
     }
 
     stop(kind: SoundKind) {

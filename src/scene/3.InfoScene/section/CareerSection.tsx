@@ -4,7 +4,6 @@ const CareerSection = () => {
 
     return (
         <SectionLayout>
-            Career
         </SectionLayout>
     )
 }

@@ -4,6 +4,7 @@ import HelloScene from "./scene/2.HelloScene/HelloScene";
 import StartScene from "./scene/1.StartScene/StartScene";
 import InfoScene from "./scene/3.InfoScene/InfoScene";
 import CurtainScene from "./scene/0.CurtainScene/CurtainScene";
+import MusicButton from "./common/components/musicButton/MusicButton";
 
 const App: React.FC = () => {
     const [sceneNumber, setSceneNumber] = useState(0);
@@ -38,6 +39,7 @@ const App: React.FC = () => {
         <>
             {nowScene}
             <CurtainScene isExistCurtain={isExistCurtain}/>
+            {sceneNumber !== 0 && <MusicButton/>}
         </>
     )
 }
