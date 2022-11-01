@@ -44,9 +44,6 @@ export const HistoryItemWrapper = styled.div`
     display: block;
   }
 
-  span:last-of-type {
-    font-size: 0.3rem;
-  }
 `
 
 const HistoryLeft = styled.div`
@@ -54,8 +51,9 @@ const HistoryLeft = styled.div`
   max-width: 200px;
   font-size: 0.7rem;
 
-  & > span {
-    margin: 0.3rem 0;
+  & > span:last-of-type {
+    margin-top: 0.6rem;
+    font-size: 0.2rem;
   }
 `;
 

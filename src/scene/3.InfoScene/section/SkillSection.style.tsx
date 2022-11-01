@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const SkillTitle = styled.div`
-  margin-bottom: 1rem;
+  margin: 0.5rem;
 `;
 
 export const SkillItemContainer = styled.div`
   max-width: 300px;
+  margin: 0.8rem 0;
 
   display: flex;
   justify-content: center;
@@ -75,7 +76,7 @@ export const SkillItem = ({name, src}: SkillItemProps) => (
 export const SkillHR = styled.div`
   width: 50%;
   height: 0.1rem;
-  margin: 2rem 0;
+  margin: 0.5rem 0;
   background-color: black;
 
 `

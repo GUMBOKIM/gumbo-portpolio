@@ -5,6 +5,8 @@ const SkillSection = () => {
 
     return (
         <SectionLayout>
+            <h3>기술 스택</h3>
+            <S.SkillHR/>
             <S.SkillTitle>
                 언어
             </S.SkillTitle>
@@ -13,7 +15,6 @@ const SkillSection = () => {
                 <S.SkillItem name='Type Script' src='language/typescript.png'/>
                 <S.SkillItem name='Java' src='language/java.png'/>
             </S.SkillItemContainer>
-            <S.SkillHR/>
             <S.SkillTitle>
                 백엔드
             </S.SkillTitle>
@@ -25,7 +26,6 @@ const SkillSection = () => {
                 <S.SkillItem name='MSSQL' src='backend/mssql.png'/>
                 <S.SkillItem name='Jenkins' src='backend/jenkins.png'/>
             </S.SkillItemContainer>
-            <S.SkillHR/>
             <S.SkillTitle>
                 프론트엔드
             </S.SkillTitle>
