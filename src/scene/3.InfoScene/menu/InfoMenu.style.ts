@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MenuContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 4rem;
+  height: 4.5rem;
   margin-bottom: 1rem;
 `
 
@@ -16,14 +16,14 @@ export const MenuItemWrapper = styled.div`
   align-items: end;
 `
 
-export const Mushroom = styled.div<{ order: number }>`
-  height: 1.5rem;
+export const MenuIcon = styled.div<{ order: number }>`
+  width: 2rem;
   aspect-ratio: 1 / 1;
 
-  background-image: url('./scene/3/background/mushroom.png');
+  background-image: url('./scene/3/background/menuicon.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: ${p => -1.51 * (p.order % 5 + 1)}rem;
+  background-position-x: ${p => -2 * (p.order % 5)}rem;
   overflow: hidden;
 
   z-index: 11;
@@ -40,7 +40,7 @@ export const MenuItem = styled.div`
 
   cursor: pointer;
 
-  &.unselect > ${Mushroom} {
+  &.unselect > ${MenuIcon} {
     animation: down 0.2s linear forwards;
 
     @keyframes down {
@@ -53,7 +53,7 @@ export const MenuItem = styled.div`
     };
   }
 
-  &.select > ${Mushroom} {
+  &.select > ${MenuIcon} {
     animation: up 0.2s linear forwards;
 
     @keyframes up {
@@ -91,38 +91,31 @@ export const SwimMario = styled.div`
   height: 2rem;
   aspect-ratio: 1 / 1;
 
-  background-image: url('./scene/2/mario.png');
+
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 
+  animation: swimUpDown 1s infinite steps(5), swimMotion 1s infinite steps(5);
+
   &, &.right {
-    animation: swimUpDown 1s infinite steps(5), rightSwim 1s infinite steps(5);
+    background-image: url('./scene/3/menu/rightswim.png');
   }
 
   &.left {
-    animation: leftSwim 1s infinite steps(5), swimUpDown 1s linear infinite !important;
+    background-image: url('./scene/3/menu/leftswim.png');
   }
 
   z-index: 12;
 
 
-  @keyframes leftSwim {
+  @keyframes swimMotion {
     from {
-      background-position-x: -2rem;
+      background-position-x: 0rem;
     }
 
     to {
-      background-position-x: -12rem;
-    }
-  };
-
-  @keyframes rightSwim {
-    from {
-      background-position-x: -49.8rem;
-    }
-    to {
-      background-position-x: -59.8rem;
+      background-position-x: -10rem;
     }
   };
 

@@ -78,8 +78,8 @@ export const Squid = styled.div<{ left: number, delay: number }>`
   position: fixed;
   bottom: 0rem;
   left: ${p => `${p.left}%`};
-  width: 3rem;
-  aspect-ratio: 13 / 19;
+  height: 4rem;
+  aspect-ratio: 1 / 1;
 
   background-image: url('./scene/3/background/squid.png');
   background-repeat: no-repeat;
@@ -93,16 +93,26 @@ export const Squid = styled.div<{ left: number, delay: number }>`
       background-position-x: 0rem;
     }
     to {
-      background-position-x: -6.4rem;
+      background-position-x: -8rem;
     }
   };
 
   @keyframes move {
-    from {
+    0% {
       transform: translate3d(0, 0, 0);
     }
-    to {
-      transform: translate3d(2rem, -100vh, 0);
+    25% {
+      transform: translate3d(10rem, -25vh, 0);
+    }
+    50% {
+      transform: translate3d(0rem, -50vh, 0);
+
+    }
+    75% {
+      transform: translate3d(-10rem, -75vh, 0);
+    }
+    100% {
+      transform: translate3d(0rem, -100vh, 0);
     }
   }
 `;

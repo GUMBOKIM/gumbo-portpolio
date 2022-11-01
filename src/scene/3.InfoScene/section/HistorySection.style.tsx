@@ -15,7 +15,7 @@ export const HistoryTitle = styled.h1`
 
 interface HistoryItemProps {
     name: string;
-    content: string;
+    content?: string;
     startDate: string;
     endDate?: string;
 }
@@ -42,6 +42,10 @@ export const HistoryItemWrapper = styled.div`
 
   span {
     display: block;
+  }
+
+  span:last-of-type {
+    font-size: 0.3rem;
   }
 `
 
@@ -71,7 +75,7 @@ export const HistoryItem = ({name, content, startDate, endDate}: HistoryItemProp
             <HistoryRight>
                 <span>{startDate}</span>
                 <span>{endDate && '-'}</span>
-                <span>{endDate && endDate}</span>
+                <span>{endDate}</span>
             </HistoryRight>
         </HistoryItemWrapper>
     );

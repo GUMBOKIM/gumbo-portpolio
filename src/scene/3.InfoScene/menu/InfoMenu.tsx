@@ -14,7 +14,7 @@ const InfoMenu = ({marioRef, navRef}: InfoMenuProps) => {
             <S.MenuItemWrapper ref={navRef}>
                 {InfoSceneData.map((scene, index) => (
                     <S.MenuItem key={scene.name}>
-                        <S.Mushroom order={index}/>
+                        <S.MenuIcon order={index}/>
                         <S.MenuItemName>
                             {scene.name}
                         </S.MenuItemName>

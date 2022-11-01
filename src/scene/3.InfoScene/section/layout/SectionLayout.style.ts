@@ -9,8 +9,8 @@ export const InfoSection = styled(Retro0StepBox)`
   height: 100%;
 
   flex: 0 0 auto;
-  scroll-snap-align: start;
 
+  scroll-snap-align: start;
 `;
 
 export const ScrollWrapper = styled.div`
