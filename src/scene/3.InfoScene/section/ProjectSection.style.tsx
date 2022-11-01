@@ -40,8 +40,9 @@ export const CompanyInfo = ({companyName, projects}: ProjectInfoProps) => {
 
 const CompanySection = styled.section`
   position: relative;
-  width: 70%;
+  width: 90%;
   max-width: 600px;
+  margin-bottom: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -56,14 +57,13 @@ const CompanyName = styled.h2`
 const ProjectDivide = styled.div`
   width: 100%;
   height: 0.1rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 
-  background-color: black;
+  background-color: dimgrey;
 `
 
 const ProjectSection = styled.section`
   width: 100%;
-  padding-left: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;

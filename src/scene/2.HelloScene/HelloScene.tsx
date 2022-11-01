@@ -16,7 +16,11 @@ const HelloScene = ({moveNextScene}: HelloSceneProps) => {
                 Developer Gumbo
             </S.GreetingBox>
             <S.DescriptionBox>
-                To be Steady Developer
+                {
+                    "To be Steady Developer\n" +
+                    "To be Positive Developer\n" +
+                    "To be Happy Developer\n"
+                }
             </S.DescriptionBox>
             <S.ExplainBox>
                 Hit the box,

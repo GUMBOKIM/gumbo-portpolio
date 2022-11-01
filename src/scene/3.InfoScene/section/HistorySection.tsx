@@ -4,6 +4,7 @@ import * as S from './HistorySection.style';
 const HistorySection = () => {
     return (
         <SectionLayout>
+            <h3>경력사항</h3>
             <S.HistorySection>
                 <S.HistoryTitle>교육</S.HistoryTitle>
                 <S.HistoryItemContainer>

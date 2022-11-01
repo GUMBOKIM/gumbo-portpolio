@@ -30,7 +30,8 @@ export const DescriptionBox = styled.div`
   top: 25%;
 
   animation: ${upDownMotion} 2s infinite linear;;
-
+  white-space: pre;
+  text-align: center;
   z-index: 10;
 
 `

@@ -15,13 +15,13 @@ const ProjectSectionData: ProjectInfoProps[] = [
                 role: '프론트, 백엔드',
                 title: 'Wapl',
                 period: '2022.03-2022.09',
-                techStack: 'React, Mobx, ProObject, Tibero, SpringBoot',
+                techStack: 'React, Mobx, ProObject',
                 link: 'https://wapl.ai/',
                 description: "고객지원 & 어드민 \n" +
                     "유지보수 및 신규 기능 개발\n" +
                     " - 파일 업로드 기능 모듈화\n" +
-                    " - CSAP 인증을 위한 개인정보 보호 처리\n" +
-                    "    (마스킹 처리)\n" +
+                    " - CSAP 인증 대응\n" +
+                    "   (개인정보 비공개 처리)\n" +
                     " - 코드 스플리팅\n" +
                     "레거시코드 스프링 전환"
             }

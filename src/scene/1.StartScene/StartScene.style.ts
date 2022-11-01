@@ -6,10 +6,9 @@ export const StartButton = styled(RetroButton)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  font-size: 2rem;
-  width: 12rem;
-  height: 4rem;
+  
+  width: 6rem;
+  height: 2rem;
 
   animation: fadeIn 1s forwards;
 

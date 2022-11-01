@@ -4,18 +4,16 @@ import * as S from "./ProfileSection.style";
 const ProfileSection = () => {
     return (
         <SectionLayout>
-            <br/>
+            <h3>프로필</h3>
             <S.ProfileContainer>
                 <S.ProfileBorder/>
                 <S.ProfileImg src='./scene/3/profile/profileImg.png' alt='profileImg'/>
             </S.ProfileContainer>
-            <br/>
             <S.ProfileDescription>
-                <p>
-                    안녕하세요!<br/>
+                <S.ProfileGreeting>
                     항상 즐겁게 개발하는<br/>
                     개발자 김대희입니다!<br/>
-                </p>
+                </S.ProfileGreeting>
                 <br/>
                 <ul>
                     <li>

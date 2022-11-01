@@ -4,16 +4,20 @@ export const ProfileContainer = styled.div`
   position: relative;
   width: 10rem;
   height: 10rem;
+  margin: auto;
 `
 
 export const ProfileBorder = styled.div`
   position: absolute;
   top: 0rem;
   left: 0rem;
+
   width: 8rem;
   height: 8rem;
-  box-shadow: 0.25rem 0 white, -0.25rem 0 white, 0 -0.25rem white, 0 0.25rem white, 0.5rem 0 white, -0.5rem 0 white, 0 -0.5rem white, 0 0.5rem white, 0 0 0 0.25rem white, 0.75rem 0 white, -0.75rem 0 white, 0 0.75rem white, 0 -0.75rem white, 0 -0.25rem 0 0.25rem white, 0 0.25rem 0 0.25rem white, 0.25rem 0 0 0.25rem white, -0.25rem 0 0 0.25rem white, 1rem 0 black, -1rem 0 black, 0 -1rem black, 0 1rem black, 0.5rem 0 0 0.25rem black, -0.5rem 0 0 0.25rem black, 0 0.5rem 0 0.25rem black, 0 -0.5rem 0 0.25rem black, 0 0 0 0.5rem black;
   margin: 1rem;
+  
+  box-shadow: 0.25rem 0 white, -0.25rem 0 white, 0 -0.25rem white, 0 0.25rem white, 0.5rem 0 white, -0.5rem 0 white, 0 -0.5rem white, 0 0.5rem white, 0 0 0 0.25rem white, 0.75rem 0 white, -0.75rem 0 white, 0 0.75rem white, 0 -0.75rem white, 0 -0.25rem 0 0.25rem white, 0 0.25rem 0 0.25rem white, 0.25rem 0 0 0.25rem white, -0.25rem 0 0 0.25rem white, 1rem 0 black, -1rem 0 black, 0 -1rem black, 0 1rem black, 0.5rem 0 0 0.25rem black, -0.5rem 0 0 0.25rem black, 0 0.5rem 0 0.25rem black, 0 -0.5rem 0 0.25rem black, 0 0 0 0.5rem black;
+
   z-index: 22;
 `
 
@@ -40,10 +44,12 @@ export const ProfileImg = styled.img`
   z-index: 21;
 `
 
+export const ProfileGreeting = styled.div`
+`
+
 export const ProfileDescription = styled.section`
   position: relative;
   max-width: 650px;
-
 
   ul {
     position: relative;
@@ -54,7 +60,7 @@ export const ProfileDescription = styled.section`
   }
 
   li {
-    max-width: 100%;
+    width: 100%;
     display: block;
     word-break: keep-all;
     word-wrap: break-word;
