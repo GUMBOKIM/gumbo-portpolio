@@ -49,6 +49,10 @@ const HistoryLeft = styled.div`
   width: 40%;
   max-width: 200px;
   font-size: 0.7rem;
+
+  & > span {
+    margin: 0.3rem 0;
+  }
 `;
 
 const HistoryRight = styled.div`
