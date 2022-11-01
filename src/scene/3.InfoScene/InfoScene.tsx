@@ -8,20 +8,20 @@ import * as S from "./InfoScene.style"
 import SceneInfo from "./InfoScene.data";
 
 const InfoScene = () => {
-    const navRef = useRef<HTMLDivElement>(null);
     const marioRef = useRef<HTMLDivElement>(null);
-    const scrollRef = useRef<HTMLDivElement>(null);
-    usePointerUpMenuItem(navRef, scrollRef);
-    useNavMarioMove(marioRef, scrollRef);
-    useSwipeWindow(scrollRef);
-    useNavMenuMotion(scrollRef, navRef);
+    const navRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    usePointerUpMenuItem(navRef, sectionRef);
+    useNavMarioMove(marioRef, sectionRef);
+    useSwipeWindow(sectionRef);
+    useNavMenuMotion(sectionRef, navRef);
 
     return (
         <>
             <SceneLayout isSceneFullSize={false}>
                 <S.InfoContainer>
                     <InfoMenu marioRef={marioRef} navRef={navRef}/>
-                    <S.InfoSectionContainer ref={scrollRef}>
+                    <S.InfoSectionContainer ref={sectionRef}>
                         {SceneInfo.map(sceneInfo => sceneInfo.section)}
                     </S.InfoSectionContainer>
                 </S.InfoContainer>
@@ -32,11 +32,11 @@ const InfoScene = () => {
 };
 
 // 메뉴 아이템 클릭 or 터치 시, 스크롤 이동
-const usePointerUpMenuItem = (navRef: RefObject<HTMLDivElement>, scrollRef: RefObject<HTMLDivElement>) => {
+const usePointerUpMenuItem = (navRef: RefObject<HTMLDivElement>, sectionRef: RefObject<HTMLDivElement>) => {
     useEffect(() => {
         const nav = navRef.current;
-        const scroll = scrollRef.current;
-        if (nav && scroll) {
+        const section = sectionRef.current;
+        if (nav && section) {
             const pointerUpEvent = (e: Event) => {
                 let target = e.target as HTMLElement;
                 if (target.childElementCount === 0 && target.parentElement) {
@@ -44,7 +44,7 @@ const usePointerUpMenuItem = (navRef: RefObject<HTMLDivElement>, scrollRef: RefO
                 }
                 nav.childNodes.forEach((element, index) => {
                     if (element === target) {
-                        scroll.scrollTo({left: scroll.clientWidth * index, behavior: "smooth"});
+                        section.scrollTo({left: section.clientWidth * index, behavior: "smooth"});
                     }
                 });
             }
@@ -55,11 +55,11 @@ const usePointerUpMenuItem = (navRef: RefObject<HTMLDivElement>, scrollRef: RefO
 }
 
 // 스크롤바 이동 => 마리오 이동
-const useNavMarioMove = (marioRef: RefObject<HTMLDivElement>, scrollRef: RefObject<HTMLDivElement>) => {
+const useNavMarioMove = (marioRef: RefObject<HTMLDivElement>, sectionRef: RefObject<HTMLDivElement>) => {
     useEffect(() => {
         const mario = marioRef.current;
-        const sectionContainer = scrollRef.current;
-        if (sectionContainer && mario) {
+        const section = sectionRef.current;
+        if (section && mario) {
             let beforeScrollLeft = 0;
             const marioSize = mario.clientWidth;
             const scrollEvent = (e: Event) => {
@@ -80,18 +80,18 @@ const useNavMarioMove = (marioRef: RefObject<HTMLDivElement>, scrollRef: RefObje
                 beforeScrollLeft = scrollLeft;
 
             };
-            sectionContainer.addEventListener('scroll', scrollEvent);
-            return () => sectionContainer.removeEventListener('scroll', scrollEvent);
+            section.addEventListener('scroll', scrollEvent);
+            return () => section.removeEventListener('scroll', scrollEvent);
         }
     }, [])
 }
 
 //
-const useSwipeWindow = (scrollRef: RefObject<HTMLDivElement>) => {
+const useSwipeWindow = (sectionRef: RefObject<HTMLDivElement>) => {
     useEffect(() => {
         if (isDesktop) {
-            const sectionContainer = scrollRef.current;
-            if (sectionContainer) {
+            const section = sectionRef.current;
+            if (section) {
                 let downX = 0;
                 const pointerDownEvent = (e: PointerEvent) => {
                     downX = e.screenX;
@@ -100,7 +100,7 @@ const useSwipeWindow = (scrollRef: RefObject<HTMLDivElement>) => {
                     const upX = e.screenX;
                     const diff = downX - upX;
                     if (Math.abs(diff) >= 100) {
-                        sectionContainer.scrollBy({left: diff, behavior: "smooth"});
+                        section.scrollBy({left: diff, behavior: "smooth"});
                     }
                 }
                 window.addEventListener('pointerdown', pointerDownEvent);
@@ -116,9 +116,9 @@ const useSwipeWindow = (scrollRef: RefObject<HTMLDivElement>) => {
 }
 
 // 네비게이션 메뉴 선택
-const useNavMenuMotion = (scrollRef: RefObject<HTMLDivElement>, navRef: RefObject<HTMLDivElement>) => {
+const useNavMenuMotion = (sectionRef: RefObject<HTMLDivElement>, navRef: RefObject<HTMLDivElement>) => {
     useEffect(() => {
-        const scroll = scrollRef.current;
+        const scroll = sectionRef.current;
         const navMenu = navRef.current;
         if (scroll && navMenu) {
             const menus = navMenu.children;
@@ -128,7 +128,7 @@ const useNavMenuMotion = (scrollRef: RefObject<HTMLDivElement>, navRef: RefObjec
             const scrollEvent = debounce((e: Event) => {
                 const target = e.target as HTMLDivElement
                 const {scrollLeft, scrollWidth} = target;
-                const menuIndex = Math.floor((scrollLeft + scrollWidth * 0.2) / scrollWidth * menuLength);
+                const menuIndex = Math.floor((scrollLeft + scrollWidth * 0.1) / scrollWidth * menuLength);
                 for (let i = 0; i < menuLength; i++) {
                     const menu = menus.item(i);
                     if (menu) {

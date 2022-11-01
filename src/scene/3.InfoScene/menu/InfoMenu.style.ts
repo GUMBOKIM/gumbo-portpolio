@@ -20,11 +20,10 @@ export const Mushroom = styled.div<{ order: number }>`
   height: 1.5rem;
   aspect-ratio: 1 / 1;
 
-  background-image: url('./scene/3/mushroom.png');
-  //background-image: url('./scene/3/object.png');
+  background-image: url('./scene/3/background/mushroom.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: ${p => -1.5 * (p.order % 5 + 1)}rem;
+  background-position-x: ${p => -1.49 * (p.order % 5 + 1)}rem;
   overflow: hidden;
 
   z-index: 11;
@@ -92,7 +91,6 @@ export const SwimMario = styled.div`
   height: 2rem;
   aspect-ratio: 1 / 1;
 
-
   background-image: url('./scene/2/mario.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -121,10 +119,10 @@ export const SwimMario = styled.div`
 
   @keyframes rightSwim {
     from {
-      background-position-x: -49rem;
+      background-position-x: -49.1rem;
     }
     to {
-      background-position-x: -59rem;
+      background-position-x: -59.1rem;
     }
   };
 

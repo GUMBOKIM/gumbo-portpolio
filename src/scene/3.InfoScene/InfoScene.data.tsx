@@ -1,8 +1,9 @@
 import {ReactNode} from "react";
 import ProfileSection from "./section/ProfileSection";
-import CareerSection from "./section/CareerSection";
+import HistorySection from "./section/HistorySection";
 import SkillSection from "./section/SkillSection";
 import ProjectSection from "./section/ProjectSection";
+import ContactSection from "./section/ContactSection";
 
 interface SceneInfoData {
     name: string;
@@ -16,9 +17,9 @@ const SceneInfo: SceneInfoData[] = [
             <ProfileSection key='profile'/>
     },
     {
-        name: 'career',
+        name: 'history',
         section:
-            <CareerSection key='career'/>
+            <HistorySection key='history'/>
     },
     {
         name: 'skill',
@@ -29,6 +30,11 @@ const SceneInfo: SceneInfoData[] = [
         name: 'project',
         section:
             <ProjectSection key='project'/>
+    },
+    {
+        name: 'contact',
+        section:
+            <ContactSection key='contact'/>
     }
 ];
 

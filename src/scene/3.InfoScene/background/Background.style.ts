@@ -8,7 +8,7 @@ export const Bubble = styled.div<{ left: number; delay: number; }>`
   width: 1rem;
   height: 1rem;
 
-  background-image: url("./scene/3/bubble.png");
+  background-image: url("./scene/3/background/bubble.png");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -38,22 +38,22 @@ export const Seaweed = styled.div<{ direction: 'LEFT' | 'RIGHT' }>`
   position: fixed;
   ${p => {
     if (p.direction === 'LEFT') {
-        return css`
-          left: 10vw;
-          top: 40%;
-        `
+      return css`
+        left: 10vw;
+        top: 40%;
+      `
     } else {
-        return css`
+      return css`
         right: 10vw;
         top: 30%;
       `
     }
-}};
+  }};
 
   width: 4rem;
   height: 16rem;
 
-  background-image: url("./scene/3/seaweed.png");
+  background-image: url("./scene/3/background/seaweed.png");
   background-repeat: no-repeat;
   background-size: cover;
 `

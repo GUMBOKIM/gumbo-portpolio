@@ -8,8 +8,8 @@ export const ProfileContainer = styled.div`
 
 export const ProfileBorder = styled.div`
   position: absolute;
-  top: -1rem;
-  left: -1rem;
+  top: 0rem;
+  left: 0rem;
   width: 8rem;
   height: 8rem;
   box-shadow: 0.25rem 0 white, -0.25rem 0 white, 0 -0.25rem white, 0 0.25rem white, 0.5rem 0 white, -0.5rem 0 white, 0 -0.5rem white, 0 0.5rem white, 0 0 0 0.25rem white, 0.75rem 0 white, -0.75rem 0 white, 0 0.75rem white, 0 -0.75rem white, 0 -0.25rem 0 0.25rem white, 0 0.25rem 0 0.25rem white, 0.25rem 0 0 0.25rem white, -0.25rem 0 0 0.25rem white, 1rem 0 black, -1rem 0 black, 0 -1rem black, 0 1rem black, 0.5rem 0 0 0.25rem black, -0.5rem 0 0 0.25rem black, 0 0.5rem 0 0.25rem black, 0 -0.5rem 0 0.25rem black, 0 0 0 0.5rem black;
@@ -19,12 +19,12 @@ export const ProfileBorder = styled.div`
 
 export const ProfileImg = styled.img`
   position: absolute;
-  top: -1.125rem;
-  left: -1rem;
+  top: 0rem;
+  left: 0rem;
   width: 10rem;
   height: 10rem;
 
-  animation: fadeIn 3s 2s steps(6) forwards;
+  animation: fadeIn 3s 1.5s steps(6) forwards;
 
   border-radius: 2rem;
 
@@ -40,5 +40,32 @@ export const ProfileImg = styled.img`
   z-index: 21;
 `
 
-export const ProfileDescription = styled.div`
+export const ProfileDescription = styled.section`
+  position: relative;
+  max-width: 650px;
+
+
+  ul {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    font-size: 0.8rem;
+    text-align: start;
+  }
+
+  li {
+    max-width: 100%;
+    display: block;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    list-style-position: inside;
+    text-indent: -2em;
+    margin-bottom: 1em;
+  }
+
+  li:before {
+    content: "■";
+    margin-right: 1em;
+  }
 `

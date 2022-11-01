@@ -14,4 +14,6 @@ export const MusicButton = styled(RetroButton)<{ isPlay: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  z-index: 99;
 `
