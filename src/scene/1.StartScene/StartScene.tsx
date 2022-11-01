@@ -9,9 +9,11 @@ interface StartSceneProps {
 
 const StartScene = ({moveNextScene}: StartSceneProps) => {
     const handleClickStart = (e: React.PointerEvent<HTMLButtonElement>) => {
-        moveNextScene();
-        audioPlayer.play('overworld');
-        e.currentTarget.disabled = true;
+        if (!e.currentTarget.disabled) {
+            moveNextScene();
+            audioPlayer.play('overworld');
+            e.currentTarget.disabled = true;
+        }
     }
 
     return (
