@@ -34,7 +34,5 @@ b
 2src/component/1.personalInfo/PersonInfoSection.tsx,e\2\e2aaaf5429b0395201bc0b5d6dcb64c94bf7676a
 9
 	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 U
 %src/component/0.pageLayout/Footer.tsx,4/5/4526e16d3553386d2ce5736f3969248abec6ea83
