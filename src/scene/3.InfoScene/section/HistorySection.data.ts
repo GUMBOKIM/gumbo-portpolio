@@ -2,7 +2,7 @@ import {HistoryProps} from "./HistorySection.style";
 
 const HistorySectionData: HistoryProps[] = [
     {
-        kind: '교육,',
+        kind: '교육',
         histories: [
             {name: '광문고등학교', startDate: '2008.03', endDate: '2011.02'},
             {name: '건국대학교', content: '기계공학부', startDate: '2012.03', endDate: '2019.02'},
