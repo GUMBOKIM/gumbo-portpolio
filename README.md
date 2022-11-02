@@ -1,4 +1,4 @@
-# Gumbo의 포트폴리오
+# Gumbo's Portfolio
 
 ### 디자인 참고
 
