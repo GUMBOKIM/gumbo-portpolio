@@ -40,7 +40,8 @@ export const CompanyInfo = ({companyName, projects}: ProjectInfoProps) => {
 
 const CompanySection = styled.section`
   position: relative;
-  width: 90%;
+  width: 70%;
+  min-width: 200px;
   max-width: 600px;
   margin-bottom: 2rem;
 
@@ -80,7 +81,7 @@ const ProjectInfoSection = styled.section`
 `
 
 const ProjectRole = styled.div`
-  font-size: 0.4rem;
+  font-size: 0.5rem;
 `
 
 const ProjectTitle = styled.div`
@@ -88,20 +89,20 @@ const ProjectTitle = styled.div`
 `
 
 const ProjectLink = styled.div`
-  font-size: 0.3rem;
+  font-size: 0.5rem;
 `;
 
 const ProjectPeriod = styled.div`
-  font-size: 0.3rem;
+  font-size: 0.5rem;
 `
 
 const ProjectTechStack = styled.div`
-  font-size: 0.3rem;
+  font-size: 0.5rem;
   color: dimgrey;
 `
 
 const ProjectDescription = styled.p`
-  font-size: 0.2rem;
+  font-size: 0.5rem;
   width: 100%;
   text-align: left;
   word-break: keep-all;

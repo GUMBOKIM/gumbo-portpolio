@@ -12,8 +12,6 @@ const HistorySection = () => {
                     <S.HistoryItem name='건국대학교' content='기계공학부' startDate='2012.03' endDate='2019.02'/>
                     <S.HistoryItem name='쌍용교육센터' content='SW 개발자 과정' startDate='2020.12' endDate='2021.05'/>
                 </S.HistoryItemContainer>
-                < br/>
-                <br/>
                 <br/>
                 <S.HistoryTitle>경력</S.HistoryTitle>
                 <S.HistoryItemContainer>

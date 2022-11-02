@@ -1,5 +1,4 @@
 import React, {RefObject, useEffect, useRef} from "react";
-import {isDesktop} from "react-device-detect";
 import debounce from "lodash/debounce";
 import Background from "./background/Background";
 import InfoMenu from "./menu/InfoMenu";
@@ -89,29 +88,29 @@ const useNavMarioMove = (marioRef: RefObject<HTMLDivElement>, sectionRef: RefObj
 //
 const useSwipeWindow = (sectionRef: RefObject<HTMLDivElement>) => {
     useEffect(() => {
-        if (isDesktop) {
-            const section = sectionRef.current;
-            if (section) {
-                let downX = 0;
-                const pointerDownEvent = (e: PointerEvent) => {
-                    downX = e.screenX;
-                }
-                const pointerUpEvent = (e: PointerEvent) => {
-                    const upX = e.screenX;
-                    const diff = downX - upX;
-                    if (Math.abs(diff) >= 100) {
-                        section.scrollBy({left: diff, behavior: "smooth"});
-                    }
-                }
-                window.addEventListener('pointerdown', pointerDownEvent);
-                window.addEventListener('pointerup', pointerUpEvent);
-                return () => {
-                    window.removeEventListener('pointerdown', pointerDownEvent);
-                    window.removeEventListener('pointerup', pointerUpEvent);
-                }
-
+        // if (isDesktop) {
+        const section = sectionRef.current;
+        if (section) {
+            let downX = 0;
+            const pointerDownEvent = (e: PointerEvent) => {
+                downX = e.screenX;
             }
+            const pointerUpEvent = (e: PointerEvent) => {
+                const upX = e.screenX;
+                const diff = downX - upX;
+                if (Math.abs(diff) >= 100) {
+                    section.scrollBy({left: diff, behavior: "smooth"});
+                }
+            }
+            window.addEventListener('pointerdown', pointerDownEvent);
+            window.addEventListener('pointerup', pointerUpEvent);
+            return () => {
+                window.removeEventListener('pointerdown', pointerDownEvent);
+                window.removeEventListener('pointerup', pointerUpEvent);
+            }
+
         }
+        // }
     })
 }
 

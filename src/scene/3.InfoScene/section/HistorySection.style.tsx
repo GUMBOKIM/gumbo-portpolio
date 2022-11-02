@@ -34,7 +34,7 @@ export const HistoryItemContainer = styled.div`
 export const HistoryItemWrapper = styled.div`
   width: 100%;
   max-width: 600px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 
   display: flex;
   justify-content: space-around;
@@ -53,7 +53,7 @@ const HistoryLeft = styled.div`
 
   & > span:last-of-type {
     margin-top: 0.6rem;
-    font-size: 0.2rem;
+    font-size: 0.5rem;
   }
 `;
 

@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const MenuContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 4.5rem;
-  margin-bottom: 1rem;
+  height: 4rem;
+  margin-bottom: 0.5rem;
 `
 
 export const MenuItemWrapper = styled.div`
@@ -17,13 +17,13 @@ export const MenuItemWrapper = styled.div`
 `
 
 export const MenuIcon = styled.div<{ order: number }>`
-  width: 2rem;
+  width: 1.5rem;
   aspect-ratio: 1 / 1;
 
   background-image: url('./scene/3/background/menuicon.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: ${p => -2 * (p.order % 5)}rem;
+  background-position-x: ${p => -1.5 * (p.order % 5)}rem;
   overflow: hidden;
 
   z-index: 11;

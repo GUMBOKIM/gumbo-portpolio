@@ -5,9 +5,8 @@ export const SkillTitle = styled.div`
 `;
 
 export const SkillItemContainer = styled.div`
+  margin: auto 0;
   max-width: 300px;
-  margin: 0.8rem 0;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

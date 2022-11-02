@@ -6,7 +6,7 @@ interface ResourceInfo {
 }
 
 const CurtainSceneSrcArr: ResourceInfo[] = [
-    {location: './scene/0/curtain2.png', type: 'image'}
+    {location: './scene/0/curtain.png', type: 'image'}
 ]
 
 const StartSceneSrcArr: ResourceInfo[] = [
@@ -22,10 +22,29 @@ const HelloSceneSrcArr: ResourceInfo[] = [
     {location: './scene/2/mario.png', type: "image"},
 ]
 
-const InfoSceneSrcArr: ResourceInfo[] = [
-    {location: './scene/3/bubble.png', type: "image"},
-    {location: './scene/3/mushroom.png', type: "image"},
-    {location: './scene/3/bubble.png', type: "image"},
+const InfoSceneSrcArrFirst: ResourceInfo[] = [
+    {location: './scene/3/profile/profileImg.png', type: "image"},
+    {location: './scene/3/background/seaweed.png', type: "image"},
+    {location: './scene/3/background/menuicon.png', type: "image"},
+    {location: './scene/3/menu/leftswim.png', type: "image"},
+    {location: './scene/3/menu/rightswim.png', type: "image"},
+]
+
+const InfoSceneSrcArrSecond: ResourceInfo[] = [
+    {location: './scene/3/background/bubble.png', type: "image"},
+    {location: './scene/3/background/squid.png', type: "image"},
+    {location: './scene/3/skill/backend/jenkins.png', type: "image"},
+    {location: './scene/3/skill/backend/jpa.png', type: "image"},
+    {location: './scene/3/skill/backend/mssql.png', type: "image"},
+    {location: './scene/3/skill/backend/mybatis.png', type: "image"},
+    {location: './scene/3/skill/backend/mysql.png', type: "image"},
+    {location: './scene/3/skill/backend/springboot.png', type: "image"},
+    {location: './scene/3/skill/frontend/react.png', type: "image"},
+    {location: './scene/3/skill/frontend/mobx.png', type: "image"},
+    {location: './scene/3/skill/frontend/reactquery.png', type: "image"},
+    {location: './scene/3/skill/language/java.png', type: "image"},
+    {location: './scene/3/skill/language/javascript.png', type: "image"},
+    {location: './scene/3/skill/language/typescript.png', type: "image"},
 ]
 
 const preload = (srcArrArr: ResourceInfo[][]) => {
@@ -71,7 +90,8 @@ const preload = (srcArrArr: ResourceInfo[][]) => {
 const Preload = () => preload([
         CurtainSceneSrcArr,
         [...StartSceneSrcArr, ...HelloSceneSrcArr],
-        InfoSceneSrcArr
+        InfoSceneSrcArrFirst,
+        InfoSceneSrcArrSecond
     ]
 );
 

@@ -7,14 +7,12 @@ const SkillSection = () => {
         <SectionLayout>
             <h3>기술 스택</h3>
             <S.SkillTitle>언어</S.SkillTitle>
-            <S.SkillHR/>
             <S.SkillItemContainer>
                 <S.SkillItem name='Java Script' src='language/javascript.png'/>
                 <S.SkillItem name='Type Script' src='language/typescript.png'/>
                 <S.SkillItem name='Java' src='language/java.png'/>
             </S.SkillItemContainer>
             <S.SkillTitle>백엔드</S.SkillTitle>
-            <S.SkillHR/>
             <S.SkillItemContainer>
                 <S.SkillItem name='Spring Boot' src='backend/springboot.png'/>
                 <S.SkillItem name='Jpa' src='backend/jpa.png'/>
@@ -24,7 +22,6 @@ const SkillSection = () => {
                 <S.SkillItem name='Jenkins' src='backend/jenkins.png'/>
             </S.SkillItemContainer>
             <S.SkillTitle>프론트엔드</S.SkillTitle>
-            <S.SkillHR/>
             <S.SkillItemContainer>
                 <S.SkillItem name='React' src='frontend/react.png'/>
                 <S.SkillItem name='MobX' src='frontend/mobx.png'/>

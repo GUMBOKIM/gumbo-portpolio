@@ -15,7 +15,7 @@ class Curtain extends CanvasObject {
     }
 
     draw() {
-        this.image.src = './scene/0/curtain2.png'
+        this.image.src = './scene/0/curtain.png'
         this.image.onload = () => {
             const height = this.context.canvas.height;
             const width = this.context.canvas.width;

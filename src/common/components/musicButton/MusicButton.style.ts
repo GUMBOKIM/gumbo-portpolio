@@ -6,7 +6,7 @@ export const MusicButton = styled(RetroButton)<{ isPlay: boolean }>`
   position: fixed;
   right: 1rem;
   bottom: 1rem;
-  width: 5rem;
+  font-size: 0.8rem;
   height: 1.2rem;
 
   background-color: ${p => p.isPlay ? 'red' : 'blue'};

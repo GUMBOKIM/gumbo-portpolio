@@ -8,10 +8,9 @@ export const InfoContainer = styled.div`
 
 export const InfoSectionContainer = styled.div`
   width: 100%;
-  height: calc(39rem);
+  height: calc(100% - 8.5rem);
 
   display: flex;
-  flex-shrink: 0;
 
   overflow-x: auto;
   scroll-snap-type: x mandatory;
