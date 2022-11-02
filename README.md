@@ -44,3 +44,7 @@
    // debounce만 사용
    import debounce from "lodash/debounce";
    ```
+
+### 배포
+
+main브랜치 커밋 -> 젠킨스 -> 배포

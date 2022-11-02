@@ -19,7 +19,7 @@ const HelloScene = ({moveNextScene}: HelloSceneProps) => {
                 {
                     "To be Steady Developer\n" +
                     "To be Positive Developer\n" +
-                    "To be Happy Developer\n"
+                    "To be Humorous Developer\n"
                 }
             </S.DescriptionBox>
             <S.ExplainBox>
