@@ -1,3 +1,5 @@
+import {useEffect} from "react";
+
 type ResourceType = 'image' | 'audio';
 
 interface ResourceInfo {
@@ -87,13 +89,16 @@ const preload = (srcArrArr: ResourceInfo[][]) => {
     sequential(srcArrArr);
 }
 
-const Preload = () => preload([
-        CurtainSceneSrcArr,
-        [...StartSceneSrcArr, ...HelloSceneSrcArr],
-        InfoSceneSrcArrFirst,
-        InfoSceneSrcArrSecond
-    ]
-);
+const usePreload = () => {
+    useEffect(() => {
+        preload([
+            CurtainSceneSrcArr,
+            [...StartSceneSrcArr, ...HelloSceneSrcArr],
+            InfoSceneSrcArrFirst,
+            InfoSceneSrcArrSecond
+        ]);
+    }, []);
+}
 
 
-export default Preload;
+export default usePreload;

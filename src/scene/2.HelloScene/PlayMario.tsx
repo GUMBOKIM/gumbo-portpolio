@@ -34,12 +34,15 @@ const PlayMario = ({moveNextScene}: PlayMarioProps) => {
                 );
 
                 // 마리오 이벤트 등록
-                addEventToMario(
+                const {addMarioEvent, removeMarioEvent} = useMarioEvent(
                     mario,
                     leftTouchAreaRef,
                     centerTouchAreaRef,
                     rightTouchAreaRef
-                );
+                )
+
+                setInterval(addMarioEvent, 2100);
+
                 const drawCanvas = () => {
                     context.clearRect(0, 0, canvas.width, canvas.height);
                     // 이동
@@ -50,10 +53,13 @@ const PlayMario = ({moveNextScene}: PlayMarioProps) => {
                     [ground, cloud1, cloud2, mario, block].forEach((o) => o.draw());
                 };
                 timer = setInterval(drawCanvas, 1000 / 60);
+
+                return () => {
+                    removeMarioEvent();
+                    clearInterval(timer);
+                }
             }
-            return () => {
-                clearInterval(timer);
-            }
+
         }
     }, []);
 
@@ -120,17 +126,22 @@ const createCanvasObject = (
     return {block, ground, mario, cloud1, cloud2};
 };
 
-const addEventToMario = (
+const useMarioEvent = (
     mario: Mario,
     leftTouchAreaRef: RefObject<HTMLDivElement>,
     centerTouchAreaRef: RefObject<HTMLDivElement>,
     rightTouchAreaRef: RefObject<HTMLDivElement>
 ) => {
+    const leftTouchArea = leftTouchAreaRef.current;
+    const centerTouchArea = centerTouchAreaRef.current;
+    const rightTouchArea = rightTouchAreaRef.current;
 
-    if (isMobile) {
-        const leftTouchArea = leftTouchAreaRef.current;
-        const centerTouchArea = centerTouchAreaRef.current;
-        const rightTouchArea = rightTouchAreaRef.current;
+    const marioKeyDown = (e: KeyboardEvent) =>
+        mario.startInteraction(mario.detectKeyInput(e.code));
+    const marioKeyUp = (e: KeyboardEvent) =>
+        mario.endInteraction(mario.detectKeyInput(e.code));
+
+    const addMarioEvent = () => {
         if (leftTouchArea && rightTouchArea && centerTouchArea) {
             leftTouchArea.addEventListener("touchstart", () =>
                 mario.startInteraction("LEFT")
@@ -151,18 +162,17 @@ const addEventToMario = (
                 mario.endInteraction("JUMP")
             );
         }
+        window.addEventListener("keydown", marioKeyDown);
+        window.addEventListener("keyup", marioKeyUp);
     }
 
-    const marioKeyDown = (e: KeyboardEvent) =>
-        mario.startInteraction(mario.detectKeyInput(e.code));
-    const marioKeyUp = (e: KeyboardEvent) =>
-        mario.endInteraction(mario.detectKeyInput(e.code));
-    window.addEventListener("keydown", marioKeyDown);
-    window.addEventListener("keyup", marioKeyUp);
-    return () => {
+    const removeMarioEvent = () => {
         window.removeEventListener("keydown", marioKeyDown);
         window.removeEventListener("keyup", marioKeyUp);
     }
+
+    return {addMarioEvent, removeMarioEvent};
+
 };
 
 export default React.memo(PlayMario);

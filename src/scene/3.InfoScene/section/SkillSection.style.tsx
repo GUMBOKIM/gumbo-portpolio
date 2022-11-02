@@ -1,10 +1,41 @@
 import styled from "styled-components";
 
-export const SkillTitle = styled.div`
+export interface SkillProps {
+    kind: string;
+    skills: {
+        name: string;
+        src: string;
+    }[]
+}
+
+export const Skill = ({kind, skills}: SkillProps) => (
+    <>
+        <SkillTitle>{kind}</SkillTitle>
+        <SkillItemContainer>
+            {skills.map((skill) =>
+                <SkillItemWrapper key={skill.name}>
+                    <SkillItemImg src={skill.src}/>
+                    <SkillItemName>{skill.name}</SkillItemName>
+                </SkillItemWrapper>
+            )}
+        </SkillItemContainer>
+    </>
+
+);
+
+
+export const SkillHR = styled.div`
+  width: 50%;
+  height: 0.1rem;
+  margin: 0.5rem 0;
+  background-color: black;
+`
+
+const SkillTitle = styled.div`
   margin: 0.5rem;
 `;
 
-export const SkillItemContainer = styled.div`
+const SkillItemContainer = styled.div`
   margin: auto 0;
   max-width: 300px;
   display: flex;
@@ -57,25 +88,4 @@ const SkillItemImg = styled.div<{ src?: string }>`
   background-image: url(${p => `./scene/3/skill/${p.src}`});
   background-repeat: no-repeat;
   background-size: cover;
-`
-
-interface SkillItemProps {
-    name: string;
-    src: string;
-}
-
-export const SkillItem = ({name, src}: SkillItemProps) => (
-    <SkillItemWrapper>
-        <SkillItemImg src={src}/>
-        <SkillItemName>{name}</SkillItemName>
-    </SkillItemWrapper>
-);
-
-
-export const SkillHR = styled.div`
-  width: 50%;
-  height: 0.1rem;
-  margin: 0.5rem 0;
-  background-color: black;
-
 `

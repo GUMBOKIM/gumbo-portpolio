@@ -13,12 +13,6 @@ export const HistoryTitle = styled.h1`
   font-size: 1rem;
 `;
 
-interface HistoryItemProps {
-    name: string;
-    content?: string;
-    startDate: string;
-    endDate?: string;
-}
 
 export const HistoryItemContainer = styled.div`
   position: relative;
@@ -63,18 +57,35 @@ const HistoryRight = styled.div`
   font-size: 0.6rem;
 `;
 
-export const HistoryItem = ({name, content, startDate, endDate}: HistoryItemProps) => {
+export interface HistoryProps {
+    kind: string;
+    histories: {
+        name: string;
+        content?: string;
+        startDate: string;
+        endDate?: string;
+    }[]
+}
+
+export const History = ({kind, histories}: HistoryProps) => {
     return (
-        <HistoryItemWrapper>
-            <HistoryLeft>
-                <span>{name}</span>
-                <span>{content}</span>
-            </HistoryLeft>
-            <HistoryRight>
-                <span>{startDate}</span>
-                <span>{endDate && '-'}</span>
-                <span>{endDate}</span>
-            </HistoryRight>
-        </HistoryItemWrapper>
+
+        <>
+            <HistoryTitle>{kind}</HistoryTitle>
+            {
+                histories.map(history =>
+                    <HistoryItemWrapper>
+                        <HistoryLeft>
+                            <span>{history.name}</span>
+                            <span>{history.content}</span>
+                        </HistoryLeft>
+                        <HistoryRight>
+                            <span>{history.startDate}</span>
+                            <span>{history.endDate && '-'}</span>
+                            <span>{history.endDate}</span>
+                        </HistoryRight>
+                    </HistoryItemWrapper>)
+            }
+        </>
     );
 }
