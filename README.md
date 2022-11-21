@@ -1,5 +1,7 @@
 # Gumbo's Portfolio
 
+[https://gumbo.kr](https://gumbo.kr)
+
 ### 디자인 참고
 
 [NES.css](https://nostalgic-css.github.io/NES.css/)
