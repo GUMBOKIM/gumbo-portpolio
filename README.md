@@ -1,6 +1,6 @@
 # Gumbo's Portfolio
 
-[https://resume.gumbo.kr](https://resume.gumbo.kr)
+[https://gumbokim.github.io/](https://gumbokim.github.io/)
 
 ### 디자인 참고
 
