@@ -2,11 +2,11 @@
 .git
 .gitignore
 
+README.md
+.dockerignore
+Dockerfile
+*.sh
+
 node_modules
 dist
 
-.dockerignore
-Dockerfile
-
-*.md
-*.sh
