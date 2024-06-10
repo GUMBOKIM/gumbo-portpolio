@@ -12,7 +12,6 @@ export interface HistoryProps {
 
 export const History = ({kind, histories}: HistoryProps) => {
     return (
-
         <HistoryItemContainer>
             <HistoryTitle>{kind}</HistoryTitle>
             {

@@ -40,7 +40,7 @@ export const CompanyInfo = ({companyName, projects}: ProjectInfoProps) => {
 
 const CompanySection = styled.section`
   position: relative;
-  width: 70%;
+  width: 90%;
   min-width: 200px;
   max-width: 600px;
   margin-bottom: 2rem;

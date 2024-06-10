@@ -10,7 +10,7 @@ const ContactSection = () => {
             <br/>
             <br/>
             <h4>이메일</h4>
-            <h5>gumbo.developer@gmail.com</h5>
+            <h5>dae4805@naver.com</h5>
             <h4>링크</h4>
             <ContactIcon/>
         </SectionLayout>

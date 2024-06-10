@@ -6,7 +6,7 @@ const ProjectSection = () => {
 
     return (
         <SectionLayout>
-            <h3>프로젝트</h3>
+            <h3>업무 경험</h3>
             {ProjectSectionData.map((company, index) =>
                 <CompanyInfo key={index} {...company}/>
             )}

@@ -12,18 +12,14 @@ const SkillSectionData: SkillProps[] = [
         kind: '백엔드',
         skills: [
             {name: 'Spring Boot', src: 'backend/springboot.png'},
-            {name: 'Jpa', src: 'backend/jpa.png'},
-            {name: 'Mybatis', src: 'backend/mybatis.png'},
-            {name: 'MYSQL', src: 'backend/mysql.png'},
-            {name: 'MSSQL', src: 'backend/mssql.png'},
-            {name: 'Jenkins', src: 'backend/jenkins.png'}
+            {name: 'NestJs', src: 'backend/nestjs.png'},
         ]
     }, {
         kind: '프론트엔드',
         skills: [
             {name: 'React', src: 'frontend/react.png'},
-            {name: 'MobX', src: 'frontend/mobx.png'},
-            {name: 'React Query', src: 'frontend/reactquery.png'}
+            {name: 'Lit Element', src: 'frontend/lit-element.png'},
+
         ]
     },
 
