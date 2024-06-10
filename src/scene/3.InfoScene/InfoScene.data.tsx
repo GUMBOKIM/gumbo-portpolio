@@ -17,7 +17,7 @@ const SceneInfo: SceneInfoData[] = [
             <ProfileSection key='profile'/>
     },
     {
-        name: 'history',
+        name: 'career',
         section:
             <HistorySection key='history'/>
     },
@@ -27,7 +27,7 @@ const SceneInfo: SceneInfoData[] = [
             <SkillSection key='skill'/>
     },
     {
-        name: 'project',
+        name: 'experience',
         section:
             <ProjectSection key='project'/>
     },
